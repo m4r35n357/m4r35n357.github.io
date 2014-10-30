@@ -12,7 +12,7 @@ animate();
 function init() {
 	var ONETHIRD = 1.0 / 3.0;
 
-	twoBody();
+	eightBody();
 	initialize();
 
 	container = document.createElement( 'div' );
