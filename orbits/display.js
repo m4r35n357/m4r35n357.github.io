@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2013  Ian Smith <m4r35n357@gmail.com>
+    Copyright (C) 2013-2015  Ian Smith <m4r35n357@gmail.com>
 
     The JavaScript code in this page is free software: you can
     redistribute it and/or modify it under the terms of the GNU
@@ -38,19 +38,32 @@ var DISPLAY = {
 	blankSize: 4,
 	potentialY: 100,
 	phiBH: 0.0,
+	pointX: function (r, phi) {
+		return this.originX + r * Math.cos(phi);
+	},
+	pointY: function (r, phi) {
+		return this.originY + r * Math.sin(phi);
+	},
+	line: function (canvas, colour, x1, y1, x2, y2) {
+		canvas.strokeStyle = colour;
+		canvas.beginPath();
+		canvas.moveTo(x1, y1);
+		canvas.lineTo(x2, y2);
+		canvas.stroke();
+	},
+	ball: function (canvas, colour, x, y, radius) {
+		canvas.fillStyle = colour;
+		canvas.beginPath();
+		canvas.arc(x, y, radius, 0, GLOBALS.TWOPI, true);
+		canvas.closePath();
+		canvas.fill();
+	},
 	circularGradient: function (canvas, x, y, innerColour, outerColour) {
 		var grd = canvas.createRadialGradient(x, y, 0, x, y, Math.sqrt(x * x + y * y));
 		grd.addColorStop(0, innerColour);
 		grd.addColorStop(1, outerColour);
 		canvas.fillStyle = grd;
 		canvas.fillRect(0, 0, 2 * x, 2 * y);
-	},
-	circle: function (canvas, X, Y, radius, colour) {
-		canvas.fillStyle = colour;
-			canvas.beginPath();
-			canvas.arc(X, Y, this.scale * radius, 0, GLOBALS.TWOPI, true);
-			canvas.closePath();
-		canvas.fill();
 	},
 	varTable: function () {
 		var M = INIT.M;
@@ -75,116 +88,59 @@ var DISPLAY = {
 			GR.vDisplay.innerHTML = (GLOBALS.speed(GR) / gamma).toExponential(3);
 		}
 	},
-	pointX: function (r, phi) {
-		return this.originX + r * Math.cos(phi);
-	},
-	pointY: function (r, phi) {
-		return this.originY + r * Math.sin(phi);
-	},
 	plotRotation: function () {
-		var canvas = this.tracks;
-		var blank = this.blankSize;
 		var phiBH, X, Y;
 		var radius = 0.7 * INIT.M * this.scale * INIT.horizon;
 		this.phiBH += INIT.deltaPhi;
 		phiBH = this.phiBH;
 		X = this.pointX(radius, phiBH);
 		Y = this.pointY(radius, phiBH);
-		canvas.clearRect(this.X - blank, this.Y - blank, 2 * blank, 2 * blank);
-		canvas.fillStyle = this.RED;
-			canvas.beginPath();
-			canvas.arc(X, Y, 2, 0, GLOBALS.TWOPI, true);
-			canvas.closePath();
-		canvas.fill();
+		this.tracks.clearRect(this.X - this.blankSize, this.Y - this.blankSize, 2 * this.blankSize, 2 * this.blankSize);
+		this.ball(this.tracks, this.RED, X, Y, 2);
 		this.X = X;
 		this.Y = Y;
 	},
-	plotOrbit: function (canvas, model) {
-		var X, Y, tracksCanvas;
-		var blank = this.blankSize;
+	plotOrbit: function (model) {
+		var X, Y;
 		var r = model.r * INIT.M * this.scale;
-		var phi = model.phi;
-		var xOld = model.X;
-		var yOld = model.Y;
-		var colour = model.colour;
-		X = this.pointX(r, phi);
-		Y = this.pointY(r, phi);
-		canvas.clearRect(xOld - blank, yOld - blank, 2 * blank, 2 * blank);
-		canvas.fillStyle = colour;
-			canvas.beginPath();
-			canvas.arc(X, Y, this.ballSize, 0, GLOBALS.TWOPI, true);
-			canvas.closePath();
-		canvas.fill();
+		X = this.pointX(r, model.phi);
+		Y = this.pointY(r, model.phi);
+		model.fg.clearRect(model.X - this.blankSize, model.Y - this.blankSize, 2 * this.blankSize, 2 * this.blankSize);
+		this.ball(model.fg, model.colour, X, Y, this.ballSize);
 		if (this.showTracks) {
-			tracksCanvas = this.tracks;
-			tracksCanvas.strokeStyle = colour;
-				tracksCanvas.beginPath();
-				tracksCanvas.moveTo(xOld, yOld);
-				tracksCanvas.lineTo(X, Y);
-			tracksCanvas.stroke();
+			this.line(this.tracks, model.colour, model.X, model.Y, X, Y);
 		}
 		model.X = X;
 		model.Y = Y;
 	},
 	energyBar: function () {
-		var canvas = DISPLAY.bgPotential;
-		canvas.strokeStyle = this.BLACK;
-			canvas.beginPath();
-			canvas.moveTo(Math.floor(INIT.horizon * INIT.M * this.scale), this.potentialY);
-			canvas.lineTo(this.originX, this.potentialY);
-		canvas.stroke();
+		this.line(DISPLAY.bgPotential, this.BLACK, Math.floor(INIT.horizon * INIT.M * this.scale), this.potentialY, this.originX, this.potentialY);
 	},
 	plotPotential: function (model) {
-		var canvas = model.fgPotential;
-		var colour = model.colour;
-		var blank = this.blankSize;
-		var energyBar = this.potentialY;
-		var v = energyBar + this.pScale * this.pSize * (model.energyBar - model.V(model.r));
+		var dBerror = GLOBALS.dB(GLOBALS.h(model), model.h0);
+		var v = this.potentialY + this.pScale * this.pSize * (model.energyBar - model.V(model.r));
 		var scaledMass = INIT.M * this.scale;
 		var r = model.r * scaledMass;
-		var dBerror = GLOBALS.dB(GLOBALS.h(model), model.h0);
-		canvas.clearRect(model.rOld * scaledMass - blank, energyBar - blank, 2 * blank, v + 2 * blank);
-		// Potential dropline
-		canvas.strokeStyle = colour;
-			canvas.beginPath();
-			canvas.moveTo(r, v);
-			canvas.lineTo(r, energyBar);
-		canvas.stroke();
-		// Potential ball
-		canvas.fillStyle = dBerror < -120.0 ? colour : dBerror < -90.0 ? this.YELLOW : dBerror < -60.0 ? this.ORANGE : this.RED;
-			canvas.beginPath();
-			canvas.arc(r, energyBar, this.ballSize, 0, GLOBALS.TWOPI, true);
-			canvas.closePath();
-		canvas.fill();
+		var errorColour = dBerror < -120.0 ? model.colour : (dBerror < -90.0 ? this.YELLOW : (dBerror < -60.0 ? this.ORANGE : this.RED));
+		model.fgPotential.clearRect(model.rOld * scaledMass - this.blankSize, this.potentialY - this.blankSize, 2 * this.blankSize, v + 2 * this.blankSize);
+		this.line(model.fgPotential, model.colour, r, v, r, this.potentialY);
+		this.ball(model.fgPotential, errorColour, r, this.potentialY, this.ballSize);
 	},
-	plotTauDot: function (model) {
-		var canvas = model.fgPotential;
-		var colour = this.MAGENTA;
-		var tDotValue;
-		var xValue = DISPLAY.pSize - 5;
-		// dTau/dt plot for GR
-		tDotValue = DISPLAY.pSize / model.tDot;
-		canvas.clearRect(xValue - 3, 0, xValue + 3, DISPLAY.pSize);
-		canvas.fillStyle = colour;
-			canvas.beginPath();
-			canvas.arc(xValue, tDotValue, this.ballSize, 0, GLOBALS.TWOPI, true);
-			canvas.closePath();
-		canvas.fill();
-		canvas.strokeStyle = colour;
-			canvas.beginPath();
-			canvas.moveTo(xValue, DISPLAY.pSize);
-			canvas.lineTo(xValue, tDotValue);
-		canvas.stroke();
+	plotTauDot: function (model) {  // dTau/dt plot for GR
+		var xValue = DISPLAY.pSize - 5;		
+		var tDotValue = DISPLAY.pSize / model.tDot;
+		model.fgPotential.clearRect(xValue - 3, 0, xValue + 3, DISPLAY.pSize);
+		this.line(model.fgPotential, this.MAGENTA, xValue, DISPLAY.pSize, xValue, tDotValue);
+		this.ball(model.fgPotential, this.MAGENTA, xValue, tDotValue, this.ballSize);
 	},
 	potential: function (model) {
-		var canvas = DISPLAY.bgPotential;
 		var i;
-		canvas.strokeStyle = model.colour;
-		canvas.beginPath();
+		DISPLAY.bgPotential.strokeStyle = model.colour;
+		DISPLAY.bgPotential.beginPath();
 		for (i = Math.floor(INIT.horizon * this.scale); i < this.pSize; i += 1) {
-			canvas.lineTo(i, this.potentialY + this.pScale * this.pSize * (model.energyBar - model.V(i / (INIT.M * this.scale))));
+			DISPLAY.bgPotential.lineTo(i, this.potentialY + this.pScale * this.pSize * (model.energyBar - model.V(i / (INIT.M * this.scale))));
 		}
-		canvas.stroke();
+		DISPLAY.bgPotential.stroke();
 	},
 	isco: function () {
 		var a = INIT.a;

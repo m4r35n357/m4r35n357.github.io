@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2013  Ian Smith <m4r35n357@gmail.com>
+    Copyright (C) 2013-2015  Ian Smith <m4r35n357@gmail.com>
 
     The JavaScript code in this page is free software: you can
     redistribute it and/or modify it under the terms of the GNU
@@ -42,13 +42,13 @@ var drawBackground = function () {
 	// Stable orbit limit
 	GLOBALS.debug && console.info("ISCO: " + isco.toFixed(1));
 	DISPLAY.bg.globalAlpha = 0.2;
-	DISPLAY.circle(DISPLAY.bg, DISPLAY.originX, DISPLAY.originY, INIT.M * isco, DISPLAY.YELLOW);
+	DISPLAY.ball(DISPLAY.bg, DISPLAY.YELLOW, DISPLAY.originX, DISPLAY.originY, DISPLAY.scale * INIT.M * isco);
 	// Ergoregion
 	DISPLAY.bg.globalAlpha = 0.6;
-	DISPLAY.circle(DISPLAY.bg, DISPLAY.originX, DISPLAY.originY, INIT.M * GLOBALS.ergosphere, DISPLAY.CYAN);
+	DISPLAY.ball(DISPLAY.bg, DISPLAY.CYAN, DISPLAY.originX, DISPLAY.originY, DISPLAY.scale * INIT.M * GLOBALS.ergosphere);
 	// Gravitational radius
 	DISPLAY.bg.globalAlpha = 1.0;
-	DISPLAY.circle(DISPLAY.bg, DISPLAY.originX, DISPLAY.originY, INIT.M * INIT.horizon, DISPLAY.BLACK);
+	DISPLAY.ball(DISPLAY.bg, DISPLAY.BLACK, DISPLAY.originX, DISPLAY.originY, DISPLAY.scale * INIT.M * INIT.horizon);
 	// Initialize potential canvases
 	DISPLAY.bgPotential.clearRect(0, 0, DISPLAY.pSize, DISPLAY.pSize);
 	NEWTON.fgPotential.clearRect(0, 0, DISPLAY.pSize, DISPLAY.pSize);
@@ -87,30 +87,49 @@ var drawBackground = function () {
 	DISPLAY.n = 0;
 };
 
-var drawForeground = function () {
-	DISPLAY.refreshId && window.clearTimeout(DISPLAY.refreshId);
-//	DISPLAY.refreshId && window.cancelAnimationFrame(DISPLAY.refreshId);
+var plotModel = function (model) {
+	if (! model.collided) {
+		model.update();
+		DISPLAY.plotOrbit(model);
+		DISPLAY.plotPotential(model);
+	}
+}
+
+var drawForeground = function () {  // main loop
+	DISPLAY.refreshId && window.cancelAnimationFrame(DISPLAY.refreshId);
 	if ((DISPLAY.n % 10) === 0) {
 		DISPLAY.varTable();
 	}
-	DISPLAY.plotRotation();
-	if (! NEWTON.collided) {
-		NEWTON.update();
-		DISPLAY.plotOrbit(NEWTON.fg, NEWTON);
-		DISPLAY.plotPotential(NEWTON);
-	}
-	if (! GR.collided) {
-		GR.update();
-		DISPLAY.plotOrbit(GR.fg, GR);
-		DISPLAY.plotPotential(GR);
-		DISPLAY.plotTauDot(GR);
-	}
+	DISPLAY.plotRotation(); // BH spin direction indicator
+	plotModel(NEWTON);
+	plotModel(GR);
+	DISPLAY.plotTauDot(GR);
 	DISPLAY.n += 1;
-	DISPLAY.refreshId = window.setTimeout(drawForeground, DISPLAY.msRefresh);
-//	DISPLAY.refreshId = window.requestAnimationFrame(drawForeground);
+	DISPLAY.refreshId = window.requestAnimationFrame(drawForeground);
 };
 
-var getDom = function () {  // read values from HTML page
+var setupModel = function (model, colour) {
+	INIT.initialize(model);
+	model.initialize();
+	model.X = DISPLAY.pointX(INIT.M * DISPLAY.scale * model.r, model.phi);
+	model.Y = DISPLAY.pointY(INIT.M * DISPLAY.scale * model.r, model.phi);
+	model.colour = colour;
+}
+
+var scenarioChange = function () {  // refresh form data
+	INIT.getHtmlValues();
+	DISPLAY.scale = INIT.getFloatById('scale');
+	DISPLAY.pScale = INIT.getFloatById('pscale');
+	document.getElementById('showTracks').checked ? DISPLAY.showTracks = true : DISPLAY.showTracks = false;
+	GLOBALS.initialize();
+	setupModel(NEWTON, DISPLAY.GREEN);
+	setupModel(GR, DISPLAY.BLUE);
+	drawBackground();
+	drawForeground();  // start thimgs moving
+	return false;  // don't reload from scratch
+};
+
+window.onload = function () {  // load static DOM elements
 	var orbitPlot = document.getElementById('tracks');
 	var potential = document.getElementById('bgpot');
 	DISPLAY.oSize = orbitPlot.width;
@@ -119,7 +138,6 @@ var getDom = function () {  // read values from HTML page
 	DISPLAY.originY = orbitPlot.height / 2;
 	DISPLAY.width = potential.width;
 	DISPLAY.tracks = orbitPlot.getContext('2d');
-
 	NEWTON.fg = document.getElementById('fgorbitn').getContext('2d');
 	GR.fg = document.getElementById('fgorbitgr').getContext('2d');
 	DISPLAY.bg = document.getElementById('bgorbit').getContext('2d');
@@ -152,39 +170,7 @@ var getDom = function () {  // read values from HTML page
 	GR.phiDotDisplay = document.getElementById('phidotGR');
 	GR.tauDotDisplay = document.getElementById('taudotGR');
 	GR.vDisplay = document.getElementById('vGR');
-	INIT.getHtmlValues();
-	DISPLAY.scale = INIT.getFloatById('scale');
-	DISPLAY.pScale = INIT.getFloatById('pscale');
-	if (document.getElementById('showTracks').checked) {
-		DISPLAY.showTracks = true;
-	} else {
-		DISPLAY.showTracks = false;
-	}
 	document.getElementById('scenarioForm').onsubmit = scenarioChange;
-};
-
-var scenarioChange = function () {  // reload with form data
-	getDom();
-	GLOBALS.initialize();
-	// Newton initial conditions
-	INIT.initialize(NEWTON);
-	NEWTON.initialize();
-	NEWTON.X = DISPLAY.pointX(INIT.M * DISPLAY.scale * NEWTON.r, NEWTON.phi);
-	NEWTON.Y = DISPLAY.pointY(INIT.M * DISPLAY.scale * NEWTON.r, NEWTON.phi);
-	NEWTON.colour = DISPLAY.GREEN;
-	// GR initial conditions
-	INIT.initialize(GR);
-	GR.initialize();
-	GR.X = DISPLAY.pointX(INIT.M * DISPLAY.scale * GR.r, GR.phi);
-	GR.Y = DISPLAY.pointY(INIT.M * DISPLAY.scale * GR.r, GR.phi);
-	GR.colour = DISPLAY.BLUE;
-	// Start drawing . . .
-	drawBackground();
-	drawForeground();
-	return false;  // don't reload from scratch
-};
-
-window.onload = function () {
-	scenarioChange();
+	scenarioChange();  // start thimgs moving
 };
 
