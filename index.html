@@ -1,75 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>m4r35n357.github.io by m4r35n357</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="orbits.css">
+	</head>
 
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/m4r35n357">View On GitHub</a></li>
-        </nav>
-      </div><!-- end header -->
+	<body>
+		<div id="orbits">
+			<p><canvas id="bgorbit" class="canvas bg" width="1080" height="1080" /></p>
+			<p><canvas id="fgorbitn" class="canvas fgn" width="1080" height="1080" /></p>
+			<p><canvas id="fgorbitgr" class="canvas fggr" width="1080" height="1080" /></p>
+			<p><canvas id="tracks" class="canvas tracks" width="1080" height="1080" /></p>
+		</div>
 
-    <div class="wrapper">
+		<div id="potentials">
+			<p><canvas id="bgpot" class="canvas bg" width="540" height="540" /></p>
+			<p><canvas id="fgpotn" class="canvas fgn" width="540" height="540" /></p>
+			<p><canvas id="fgpotgr" class="canvas fggr" width="540" height="540" /></p>
+		</div>
 
-      <section>
-        <div id="title">
-          <h1>m4r35n357.github.io</h1>
-          <p>Ian's GitHub Web Pages</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/m4r35n357">m4r35n357</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+		<div id="input">
+			<form id="scenarioForm" method="post">
+				<table border="0">
+					<tr>
+						<td align="right">RZoom</td><td><input id="scale" type="text" value="0.0000000075" size="12" /></td>
+						<td align="right">Mass, kg;</td><td><input id="mass" type="text" value="1.9891e30" size="8" /></td>
+					</tr>
+					<tr>
+						<td align="right">&delta;T</td><td><input id="timestep" type="text" value="1000000000" size="12" /></td>
+						<td align="right">"radius", m</td><td><input id="radius" type="text" value="58.0e9" size="8" /></td>
+					</tr>
+					<tr>
+						<td align="right">L &percnt;</td><td><input id="lfactor" type="text" value="97.9" size="4" /></td>
+						<td align="right">J/M (&vert;a&vert;&lt;1)</td>
+						<td><select id="spin">
+							<option value="1.00">&nbsp;1.0</option>
+							<option value="0.75">&nbsp;0.75</option>
+							<option value="0.50">&nbsp;0.5</option>
+							<option value="0.25">&nbsp;0.25</option>
+							<option value="0.00" selected="selected">&nbsp;0.0</option>
+							<option value="-0.25">-0.25</option>
+							<option value="-0.50">-0.5</option>
+							<option value="-0.75">-0.75</option>
+							<option value="-1.00">-1.0</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td align="right">PScale</td><td><input id="pscale" type="text" value="1300000000" size="12" /></td>
+						<td align="right">Tracks</td><td><input id="showTracks" type="checkbox" checked /></td>
+					</tr>
+					<tr>
+						<td align="right">Order</td>
+						<td><select id="order">
+							<option value="2">&nbsp;&nbsp;2nd</option>
+							<option value="4">&nbsp;&nbsp;4th</option>
+							<option value="6">&nbsp;&nbsp;6th</option>
+							<option value="8">&nbsp;&nbsp;8th</option>
+							<option value="10">10th</option>
+						</select></td>
+						<td></td><td align="right"><input type="submit" value="Change"></td>
+					</tr>
+				</table> 
+			</form>
+		</div>
 
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+		<div id="output">
+			<table border="0">
+				<tr><th></th><th class="newton">Newton</th><th class="gr">GR</th><th class="gr">GR</th></tr>			
+				<tr><td>E</td><td id="eNEWTON" class="newton">-</td><td id="eGR" class="gr"></td><td id="rs" class="gr"><td>EH, m</td></tr>
+				<tr><td>L</td><td id="lNEWTON" class="newton"></td><td id="lGR" class="gr"></td><td id="tauGR" class="gr"><td>&tau;, s</td></tr>
+				<tr><td>t, s</td><td id="timeNEWTON" class="newton"></td><td id="tGR" class="gr"></td><td id="tdotGR" class="gr"></td><td>dt/d&tau;, &gamma;</td></tr>
+				<tr><td>r, m</td><td id="rNEWTON" class="newton"></td><td id="rGR" class="gr"></td><td id="rdotGR" class="gr"></td><td>dr/d&tau;</td></tr>
+				<tr><td>&phi;</td><td id="phiNEWTON" class="newton"></td><td id="phiGR" class="gr"></td><td id="phidotGR" class="gr"></td><td>d&phi;/d&tau;</td></tr>
+				<tr><td>r<sub>min</sub></td><td id="rminNEWTON" class="newton">-</td><td id="rminGR" class="gr">-</td></tr>
+				<tr><td>&phi;<sub>min</sub></td><td id="pNEWTON" class="newton">-</td><td id="pGR" class="gr">-</td></tr>
+				<tr><td>r<sub>max</sub></td><td id="rmaxNEWTON" class="newton">-</td><td id="rmaxGR" class="gr">-</td></tr>
+				<tr><td>&phi;<sub>max</sub></td><td id="aNEWTON" class="newton">-</td><td id="aGR" class="gr">-</td></tr>
+				<!--<tr><td>v, c</td><td id="vNEWTON" class="newton">-</td><td id="vGR" class="gr">-</td></tr>-->
+			</table>
+		</div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
+		<!--<script type="text/javascript" src="rafshim.js"></script>-->
+		<script type="text/javascript" src="models.js"></script>
+		<script type="text/javascript" src="display.js"></script>
+		<script type="text/javascript" src="orbits.js"></script>
+	</body>
 </html>
+
