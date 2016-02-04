@@ -23,15 +23,15 @@
 			<form id="scenarioForm" method="post">
 				<table border="0">
 					<tr>
-						<td align="right">RZoom</td><td><input id="scale" type="text" value="20.0" size="12" /></td>
-						<td align="right">Mass, kg;</td><td><input id="mass" type="text" value="1.0" size="8" /></td>
+						<td align="right">RZoom</td><td><input id="scale" type="text" value="0.0000000075" size="12" /></td>
+						<td align="right">Mass, kg;</td><td><input id="mass" type="text" value="1.9891e30" size="8" /></td>
 					</tr>
 					<tr>
-						<td align="right">&delta;T</td><td><input id="timestep" type="text" value="1.0" size="12" /></td>
-						<td align="right">"radius", m</td><td><input id="radius" type="text" value="12.0" size="8" /></td>
+						<td align="right">&delta;T</td><td><input id="timestep" type="text" value="1000000000" size="12" /></td>
+						<td align="right">"radius", m</td><td><input id="radius" type="text" value="58.0e9" size="8" /></td>
 					</tr>
 					<tr>
-						<td align="right">L &percnt;</td><td><input id="lfactor" type="text" value="100.0" size="4" /></td>
+						<td align="right">L &percnt;</td><td><input id="lfactor" type="text" value="97.9" size="4" /></td>
 						<td align="right">J/M (&vert;a&vert;&lt;1)</td>
 						<td><select id="spin">
 							<option value="1.00">&nbsp;1.0</option>
@@ -46,7 +46,7 @@
 						</select></td>
 					</tr>
 					<tr>
-						<td align="right">PZoom</td><td><input id="pscale" type="text" value="1.0" size="12" /></td>
+						<td align="right">PScale</td><td><input id="pscale" type="text" value="1300000000" size="12" /></td>
 						<td align="right">Tracks</td><td><input id="showTracks" type="checkbox" checked /></td>
 					</tr>
 					<tr>
@@ -76,7 +76,7 @@
 				<tr><td>&phi;<sub>min</sub></td><td id="pNEWTON" class="newton">-</td><td id="pGR" class="gr">-</td></tr>
 				<tr><td>r<sub>max</sub></td><td id="rmaxNEWTON" class="newton">-</td><td id="rmaxGR" class="gr">-</td></tr>
 				<tr><td>&phi;<sub>max</sub></td><td id="aNEWTON" class="newton">-</td><td id="aGR" class="gr">-</td></tr>
-				<tr><td>v, m/s</td><td id="vNEWTON" class="newton">-</td><td id="vGR" class="gr">-</td></tr>
+				<!--<tr><td>v, c</td><td id="vNEWTON" class="newton">-</td><td id="vGR" class="gr">-</td></tr>-->
 			</table>
 		</div>
 

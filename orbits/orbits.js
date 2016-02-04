@@ -79,10 +79,10 @@ var drawBackground = function () {
 	DISPLAY.bgPotential.stroke();
 	DISPLAY.energyBar();
 	// Constants of motion for table
-	NEWTON.lDisplay.innerHTML = (INIT.M * NEWTON.L).toExponential(3);
+	NEWTON.lDisplay.innerHTML = (INIT.M * NEWTON.L).toFixed(6);
 	GR.eDisplay.innerHTML = GR.E.toFixed(6);
-	GR.lDisplay.innerHTML = (INIT.M * GR.L).toExponential(3);
-	GR.rsDisplay.innerHTML = (INIT.M * INIT.horizon).toExponential(3);
+	GR.lDisplay.innerHTML = (INIT.M * GR.L).toFixed(6);
+	GR.rsDisplay.innerHTML = (INIT.M * INIT.horizon).toFixed(3);
 	// time step counter
 	DISPLAY.n = 0;
 };
