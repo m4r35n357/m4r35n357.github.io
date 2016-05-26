@@ -73,7 +73,7 @@ var DISPLAY = {
 			NEWTON.rDisplay.innerHTML = (M * NEWTON.r).toFixed(3);
 			NEWTON.phiDisplay.innerHTML = GLOBALS.phiDegrees(NEWTON.phi);
 			NEWTON.tDisplay.innerHTML = properTime.toFixed(1);
-//			NEWTON.vDisplay.innerHTML = GLOBALS.speed(NEWTON).toFixed(3);
+			NEWTON.vDisplay.innerHTML = NEWTON.speed().toFixed(3);
 		}
 		if (! GR.collided) {
 			GR.tDisplay.innerHTML = (M * GR.t / c).toFixed(1);
@@ -83,7 +83,7 @@ var DISPLAY = {
 			GR.tDotDisplay.innerHTML = GR.tDot.toFixed(3);
 			GR.rDotDisplay.innerHTML = GR.rDot.toFixed(3);
 			GR.phiDotDisplay.innerHTML = (GR.phiDot / M).toFixed(3);
-//			GR.vDisplay.innerHTML = (GLOBALS.speed(GR) / GR.tDot).toFixed(3);
+			GR.vDisplay.innerHTML = GR.speed().toFixed(6);
 		}
 	},
 	plotRotation: function () {
@@ -126,10 +126,10 @@ var DISPLAY = {
 	},
 	plotTauDot: function (model) {  // dTau/dt plot for GR
 		var xValue = DISPLAY.pSize - 5;		
-		var tDotValue = DISPLAY.pSize / model.tDot;
+		var tDotValue = DISPLAY.pSize * (1.0 - model.speed());
 		model.fgPotential.clearRect(xValue - 3, 0, xValue + 3, DISPLAY.pSize);
-		this.line(model.fgPotential, this.MAGENTA, xValue, DISPLAY.pSize, xValue, tDotValue);
-		this.ball(model.fgPotential, this.MAGENTA, xValue, tDotValue, this.ballSize);
+		this.line(model.fgPotential, this.WHITE, xValue, DISPLAY.pSize, xValue, tDotValue);
+		this.ball(model.fgPotential, this.WHITE, xValue, tDotValue, this.ballSize);
 	},
 	potential: function (model) {
 		var i;
