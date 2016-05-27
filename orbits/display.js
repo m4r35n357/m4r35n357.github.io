@@ -73,7 +73,7 @@ var DISPLAY = {
 			NEWTON.rDisplay.innerHTML = (M * NEWTON.r).toFixed(3);
 			NEWTON.phiDisplay.innerHTML = GLOBALS.phiDegrees(NEWTON.phi);
 			NEWTON.tDisplay.innerHTML = properTime.toFixed(1);
-			NEWTON.vDisplay.innerHTML = NEWTON.speed().toFixed(3);
+			NEWTON.vDisplay.innerHTML = NEWTON.speed().toFixed(6);
 		}
 		if (! GR.collided) {
 			GR.tDisplay.innerHTML = (M * GR.t / c).toFixed(1);
@@ -128,8 +128,8 @@ var DISPLAY = {
 		var xValue = DISPLAY.pSize - 5;		
 		var tDotValue = DISPLAY.pSize * (1.0 - model.speed());
 		model.fgPotential.clearRect(xValue - 3, 0, xValue + 3, DISPLAY.pSize);
-		this.line(model.fgPotential, this.WHITE, xValue, DISPLAY.pSize, xValue, tDotValue);
-		this.ball(model.fgPotential, this.WHITE, xValue, tDotValue, this.ballSize);
+		this.line(model.fgPotential, this.ORANGE, xValue, DISPLAY.pSize, xValue, tDotValue);
+		this.ball(model.fgPotential, this.ORANGE, xValue, tDotValue, this.ballSize);
 	},
 	potential: function (model) {
 		var i;
