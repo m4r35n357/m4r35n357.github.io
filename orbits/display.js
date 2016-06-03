@@ -58,6 +58,13 @@ var DISPLAY = {
 		canvas.closePath();
 		canvas.fill();
 	},
+	circle: function (canvas, colour, x, y, radius) {
+		canvas.strokeStyle = colour;
+		canvas.beginPath();
+		canvas.arc(x, y, radius, 0, GLOBALS.TWOPI, true);
+		canvas.closePath();
+		canvas.stroke();
+	},
 	circularGradient: function (canvas, x, y, innerColour, outerColour) {
 		var grd = canvas.createRadialGradient(x, y, 0, x, y, Math.sqrt(x * x + y * y));
 		grd.addColorStop(0, innerColour);
@@ -128,8 +135,8 @@ var DISPLAY = {
 		var xValue = DISPLAY.pSize - 5;		
 		var tDotValue = DISPLAY.pSize * (1.0 - model.speed());
 		model.fgPotential.clearRect(xValue - 3, 0, xValue + 3, DISPLAY.pSize);
-		this.line(model.fgPotential, this.ORANGE, xValue, DISPLAY.pSize, xValue, tDotValue);
-		this.ball(model.fgPotential, this.ORANGE, xValue, tDotValue, this.ballSize);
+		this.line(model.fgPotential, model.colour, xValue, DISPLAY.pSize, xValue, tDotValue);
+		this.ball(model.fgPotential, model.colour, xValue, tDotValue, this.ballSize);
 	},
 	potential: function (model) {
 		var i;
@@ -139,16 +146,6 @@ var DISPLAY = {
 			DISPLAY.bgPotential.lineTo(i, this.potentialY + this.pScale * this.pSize * (model.energyBar - model.V(i / (INIT.M * this.scale))));
 		}
 		DISPLAY.bgPotential.stroke();
-	},
-	isco: function () {
-		var a = INIT.a;
-		var z1 = 1.0 + Math.pow(1.0 - a * a, 1.0 / 3.0) * (Math.pow(1.0 + a, 1.0 / 3.0) + Math.pow(1.0 - a, 1.0 / 3.0));
-		var z2 = Math.sqrt(3.0 * a * a + z1 * z1);
-		if (GLOBALS.prograde) {
-			return 3.0 + z2 - Math.sqrt((3.0 - z1) * (3.0 + z1 + 2.0 * z2));
-		} else {
-			return 3.0 + z2 + Math.sqrt((3.0 - z1) * (3.0 + z1 + 2.0 * z2));
-		}
 	},
 };
 

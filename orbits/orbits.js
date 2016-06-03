@@ -23,7 +23,10 @@
 var drawBackground = function () {
 	var grd;
 	var i;
-	var isco = DISPLAY.isco();
+	var isco = DISPLAY.scale * INIT.M * GLOBALS.isco(INIT.a);
+	var photonSphere = DISPLAY.scale * INIT.M * GLOBALS.photonSphere(INIT.a);
+	var ergosphere = DISPLAY.scale * INIT.M * GLOBALS.ergosphere;
+	var horizon = DISPLAY.scale * INIT.M * INIT.horizon;
 	// Initialize orbit canvases
 	DISPLAY.bg.clearRect(0, 0, DISPLAY.oSize, DISPLAY.oSize);
 	DISPLAY.tracks.clearRect(0, 0, DISPLAY.oSize, DISPLAY.oSize);
@@ -39,16 +42,17 @@ var drawBackground = function () {
 		DISPLAY.bg.arc(DISPLAY.originX, DISPLAY.originY, DISPLAY.scale * GLOBALS.rSolar, 0, GLOBALS.TWOPI, true);
 		DISPLAY.bg.closePath();
 	DISPLAY.bg.stroke();
-	// Stable orbit limit
+	// ISCO
 	GLOBALS.debug && console.info("ISCO: " + isco.toFixed(1));
-	DISPLAY.bg.globalAlpha = 0.2;
-	DISPLAY.ball(DISPLAY.bg, DISPLAY.YELLOW, DISPLAY.originX, DISPLAY.originY, DISPLAY.scale * INIT.M * isco);
+	DISPLAY.bg.globalAlpha = 0.1;
+	DISPLAY.ball(DISPLAY.bg, DISPLAY.WHITE, DISPLAY.originX, DISPLAY.originY, isco);
 	// Ergoregion
-	DISPLAY.bg.globalAlpha = 0.6;
-	DISPLAY.ball(DISPLAY.bg, DISPLAY.CYAN, DISPLAY.originX, DISPLAY.originY, DISPLAY.scale * INIT.M * GLOBALS.ergosphere);
-	// Gravitational radius
 	DISPLAY.bg.globalAlpha = 1.0;
-	DISPLAY.ball(DISPLAY.bg, DISPLAY.BLACK, DISPLAY.originX, DISPLAY.originY, DISPLAY.scale * INIT.M * INIT.horizon);
+	DISPLAY.ball(DISPLAY.bg, DISPLAY.CYAN, DISPLAY.originX, DISPLAY.originY, ergosphere);
+	// Photon sphere
+    DISPLAY.circle(DISPLAY.bg, DISPLAY.MAGENTA, DISPLAY.originX, DISPLAY.originY, photonSphere);
+	// Gravitational radius
+	DISPLAY.ball(DISPLAY.bg, DISPLAY.BLACK, DISPLAY.originX, DISPLAY.originY, horizon);
 	// Initialize potential canvases
 	DISPLAY.bgPotential.clearRect(0, 0, DISPLAY.pSize, DISPLAY.pSize);
 	NEWTON.fgPotential.clearRect(0, 0, DISPLAY.pSize, DISPLAY.pSize);
@@ -56,23 +60,28 @@ var drawBackground = function () {
 	// Background
 	DISPLAY.bgPotential.fillStyle = grd;
 	DISPLAY.bgPotential.fillRect(0, 0, DISPLAY.width, DISPLAY.pSize);
-	// Stable orbit limit
-	DISPLAY.bgPotential.globalAlpha = 0.2;
-	DISPLAY.bgPotential.fillStyle = DISPLAY.YELLOW;
-	DISPLAY.bgPotential.fillRect(0, 0, DISPLAY.scale * INIT.M * isco, DISPLAY.pSize); 
+	// ISCO
+	DISPLAY.bgPotential.globalAlpha = 0.1;
+	DISPLAY.bgPotential.fillStyle = DISPLAY.WHITE;
+	DISPLAY.bgPotential.fillRect(0, 0, isco, DISPLAY.pSize); 
 	// Ergoregion
-	DISPLAY.bgPotential.globalAlpha = 0.6;
+	DISPLAY.bgPotential.globalAlpha = 1.0;
 	DISPLAY.bgPotential.fillStyle = DISPLAY.CYAN;
-	DISPLAY.bgPotential.fillRect(0, 0, DISPLAY.scale * INIT.M * GLOBALS.ergosphere, DISPLAY.pSize); 
+	DISPLAY.bgPotential.fillRect(0, 0, ergosphere, DISPLAY.pSize); 
+	// Photon sphere
+	DISPLAY.bgPotential.strokeStyle = DISPLAY.MAGENTA;
+		DISPLAY.bgPotential.beginPath();
+		DISPLAY.bgPotential.moveTo(photonSphere, 0);
+		DISPLAY.bgPotential.lineTo(photonSphere, DISPLAY.pSize);
+	DISPLAY.bgPotential.stroke();
 	// Effective potentials
 	DISPLAY.potential(NEWTON);
 	DISPLAY.potential(GR);
 	// Horizon
-	DISPLAY.bgPotential.globalAlpha = 1.0;
 	DISPLAY.bgPotential.fillStyle = DISPLAY.BLACK;
-	DISPLAY.bgPotential.fillRect(0, 0, DISPLAY.scale * INIT.M * INIT.horizon, DISPLAY.pSize);
+	DISPLAY.bgPotential.fillRect(0, 0, horizon, DISPLAY.pSize);
 	// Solar perimeter
-	DISPLAY.bgPotential.strokeStyle = DISPLAY.YELLOW;
+	DISPLAY.bgPotential.strokeStyle = DISPLAY.WHITE;
 		DISPLAY.bgPotential.beginPath();
 		DISPLAY.bgPotential.moveTo(GLOBALS.rSolar * DISPLAY.scale, 0);
 		DISPLAY.bgPotential.lineTo(GLOBALS.rSolar * DISPLAY.scale, DISPLAY.pSize);
@@ -103,6 +112,7 @@ var drawForeground = function () {  // main loop
 	DISPLAY.plotRotation(); // BH spin direction indicator
 	plotModel(NEWTON);
 	plotModel(GR);
+	DISPLAY.plotTauDot(NEWTON);
 	DISPLAY.plotTauDot(GR);
 	DISPLAY.n += 1;
 	DISPLAY.refreshId = window.requestAnimationFrame(drawForeground);
