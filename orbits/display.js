@@ -106,12 +106,14 @@ var DISPLAY = {
 		this.Y = Y;
 	},
 	plotOrbit: function (model) {
+		var dBerror = GLOBALS.dB(GLOBALS.h(model), model.h0);
 		var X, Y;
 		var r = model.r * INIT.M * this.scale;
 		X = this.pointX(r, model.phi);
 		Y = this.pointY(r, model.phi);
+		var errorColour = dBerror < -120.0 ? model.colour : (dBerror < -90.0 ? this.YELLOW : (dBerror < -60.0 ? this.ORANGE : this.RED));
 		model.fg.clearRect(model.X - this.blankSize, model.Y - this.blankSize, 2 * this.blankSize, 2 * this.blankSize);
-		this.ball(model.fg, model.colour, X, Y, this.ballSize);
+		this.ball(model.fg, errorColour, X, Y, this.ballSize);
 		if (this.showTracks) {
 			this.line(this.tracks, model.colour, model.X, model.Y, X, Y);
 		}
