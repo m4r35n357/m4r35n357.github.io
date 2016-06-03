@@ -81,7 +81,7 @@ var drawBackground = function () {
 	DISPLAY.bgPotential.fillStyle = DISPLAY.BLACK;
 	DISPLAY.bgPotential.fillRect(0, 0, horizon, DISPLAY.pSize);
 	// Solar perimeter
-	DISPLAY.bgPotential.strokeStyle = DISPLAY.WHITE;
+	DISPLAY.bgPotential.strokeStyle = DISPLAY.YELLOW;
 		DISPLAY.bgPotential.beginPath();
 		DISPLAY.bgPotential.moveTo(GLOBALS.rSolar * DISPLAY.scale, 0);
 		DISPLAY.bgPotential.lineTo(GLOBALS.rSolar * DISPLAY.scale, DISPLAY.pSize);
