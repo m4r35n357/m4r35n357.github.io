@@ -27,27 +27,6 @@
 					<tr>
 						<td align="right">c</td><td><input id="c" type="text" value="299792458.0" size="12" /></td>
 						<td align="right">G</td><td><input id="G" type="text" value="6.67398e-11" size="8" /></td>
-						<td align="right">Tracks</td><td><input id="showTracks" type="checkbox" checked /></td>
-					</tr>
-					<tr>
-						<td align="right">&delta;T</td><td><input id="timestep" type="text" value="1000000000" size="12" /></td>
-						<td align="right">M</td><td><input id="mass" type="text" value="1.9891e30" size="8" /></td>
-						<td align="right">a</td>
-						<td><select id="spin">
-							<option value="1.00">&nbsp;1.0</option>
-							<option value="0.75">&nbsp;0.75</option>
-							<option value="0.50">&nbsp;0.5</option>
-							<option value="0.25">&nbsp;0.25</option>
-							<option value="0.00" selected="selected">&nbsp;0.0</option>
-							<option value="-0.25">-0.25</option>
-							<option value="-0.50">-0.5</option>
-							<option value="-0.75">-0.75</option>
-							<option value="-1.00">-1.0</option>
-						</select></td>
-					</tr>
-					<tr>
-						<td align="right">r scale</td><td><input id="scale" type="text" value="0.0000000075" size="12" /></td>
-						<td align="right">r</td><td><input id="radius" type="text" value="58.0e9" size="8" /></td>
 						<td align="right">Integrator</td>
 						<td><select id="order">
 							<option value="2">&nbsp;&nbsp;2nd Order</option>
@@ -58,13 +37,35 @@
 						</select></td>
 					</tr>
 					<tr>
+						<td align="right">&delta;T</td><td><input id="timestep" type="text" value="1000000000" size="12" /></td>
+						<td align="right">Mass</td><td><input id="mass" type="text" value="1.9891e30" size="8" /></td>
+						<td align="right">Spin</td>
+						<td><select id="spin">
+							<option value="1.00">a = &nbsp;1.0</option>
+							<option value="0.75">a = &nbsp;0.75</option>
+							<option value="0.50">a = &nbsp;0.5</option>
+							<option value="0.25">a = &nbsp;0.25</option>
+							<option value="0.00" selected="selected">a = &nbsp;0.0</option>
+							<option value="-0.25">a = -0.25</option>
+							<option value="-0.50">a = -0.5</option>
+							<option value="-0.75">a = -0.75</option>
+							<option value="-1.00">a = -1.0</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td align="right">r scale</td><td><input id="scale" type="text" value="0.0000000075" size="12" /></td>
+						<td align="right">r</td><td><input id="radius" type="text" value="58.0e9" size="8" /></td>
+						<td align="right">Debug</td><td><input id="toggleDebug" type="checkbox" unchecked /></td>
+					</tr>
+					<tr>
 					</tr>
 					<tr>
 						<td align="right">p scale</td><td><input id="pscale" type="text" value="1300000000" size="12" /></td>
 						<td align="right">L&percnt;</td><td><input id="lfactor" type="text" value="97.9" size="8" /></td>
-						<td></td><td align="right"><input type="submit" value="Change"></td>
+						<td align="right">Tracks</td><td><input id="showTracks" type="checkbox" checked /></td>
 					</tr>
 					<tr>
+						<td></td><td></td><td></td><td></td><td></td><td align="right"><input type="submit" value="Change"></td>
 					</tr>
 				</table> 
 			</form>

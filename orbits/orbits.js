@@ -132,6 +132,7 @@ var scenarioChange = function () {  // refresh form data
 	DISPLAY.pScale = INIT.getFloatById('pscale');
 	document.getElementById('showTracks').checked ? DISPLAY.showTracks = true : DISPLAY.showTracks = false;
 	GLOBALS.initialize();
+	document.getElementById('toggleDebug').checked ? GLOBALS.debug = true : GLOBALS.debug = false;
 	setupModel(NEWTON, DISPLAY.GREEN);
 	setupModel(GR, DISPLAY.BLUE);
 	drawBackground();
