@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Simulations.EulerCromer &ndash; doc &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Simulations.EulerCromer &ndash; doc Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">doc</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Simulations.html">Simulations</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">EulerCromer</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="creation_method"><a href="Simulations.EulerCromer.EulerCromer.html">EulerCromer</a></li>
+          <li class="virtual_method"><a href="Simulations.EulerCromer.step.html">step</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">EulerCromer</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Simulations.EulerCromer" alt="Object hierarchy for EulerCromer" src="img/Simulations.EulerCromer.png"/>
+
+      <map id="Simulations.EulerCromer" name="Simulations.EulerCromer">
+<area shape="rect" id="node1" href="Simulations.EulerCromer.html" title="Simulations.EulerCromer" alt="" coords="48,197,257,245"/>
+<area shape="rect" id="node2" href="Simulations.Symplectic.html" title="Simulations.Symplectic" alt="" coords="55,101,251,149"/>
+<area shape="rect" id="node4" href="Simulations.ISymplectic.html" title="Simulations.ISymplectic" alt="" coords="143,5,346,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">EulerCromer</span></b> : <span class="main_type"><a href="Simulations.Symplectic.html" class="abstract_class">Symplectic</a></span>
+        </div>
+        <div class="description">
+          <p>First-order symplectic integrator concrete subclass. This integrator is NOT time symmetrical.</p>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Simulations.html">Simulations</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">doc</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Simulations.EulerCromer.EulerCromer.html" class="creation_method">EulerCromer</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> h)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description"></span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_keyword">void</span> <b><a href="Simulations.EulerCromer.step.html" class="virtual_method">step</a></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">1st order integration step. Performs the following calls on 
+                <a href="Simulations.IModel.html" class="interface">IModel</a> per iteration:</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline">
+            <div class="text">All known members inherited from class Simulations.Symplectic</div>
+            <div class="toggle">
+              <img onclick="toggle_box  (this, 'box-content-7')" src="../coll_open.png">&nbsp;</div>
+            </div>
+            <div class="content" id="box-content-7">
+              <div class="column">
+                <ul class="navi_inline">
+                  <li class="abstract_method"><a href="Simulations.Symplectic.step.html">step</a></li>
+                </ul>
+              </div>
+              <div class="column">
+                <ul class="navi_inline">
+                  <li class="method"><a href="Simulations.Symplectic.getH.html">getH</a></li>
+                </ul>
+              </div>
+              <div class="column">
+                <ul class="navi_inline">
+                  <li class="field"><a href="Simulations.Symplectic.c_d.html">c_d</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="headline">
+              <div class="text">All known members inherited from class GLib.Object</div>
+              <div class="toggle">
+                <img onclick="toggle_box  (this, 'box-content-8')" src="../coll_open.png">&nbsp;</div>
+              </div>
+              <div class="content" id="box-content-8">
+                <div class="column">
+                  <ul class="navi_inline">
+                    <li class="static_method">@new</li>
+                    <li class="static_method">newv</li>
+                    <li class="static_method">new_valist</li>
+                    <li class="method">get_type</li>
+                    <li class="method">get_class</li>
+                    <li class="method">@ref</li>
+                    <li class="method">unref</li>
+                    <li class="method">ref_sink</li>
+                    <li class="method">weak_ref</li>
+                    <li class="method">weak_unref</li>
+                    <li class="method">add_weak_pointer</li>
+                    <li class="method">remove_weak_pointer</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <ul class="navi_inline">
+                    <li class="method">@get</li>
+                    <li class="method">@set</li>
+                    <li class="method">get_property</li>
+                    <li class="method">set_property</li>
+                    <li class="method">get_data</li>
+                    <li class="method">set_data</li>
+                    <li class="method">set_data_full</li>
+                    <li class="method">steal_data</li>
+                    <li class="method">get_qdata</li>
+                    <li class="method">set_qdata</li>
+                    <li class="method">set_qdata_full</li>
+                    <li class="method">steal_qdata</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <ul class="navi_inline">
+                    <li class="method">freeze_notify</li>
+                    <li class="method">thaw_notify</li>
+                    <li class="virtual_method">dispose</li>
+                    <li class="virtual_method">constructed</li>
+                    <li class="method">notify_property</li>
+                    <li class="method">connect</li>
+                    <li class="method">disconnect</li>
+                    <li class="method">add_toggle_ref</li>
+                    <li class="method">remove_toggle_ref</li>
+                    <li class="method">bind_property</li>
+                    <li class="signal">notify</li>
+                    <li class="field">ref_count</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="headline">
+                <div class="text">All known members inherited from interface Simulations.ISymplectic</div>
+                <div class="toggle">
+                  <img onclick="toggle_box  (this, 'box-content-9')" src="../coll_open.png">&nbsp;</div>
+                </div>
+                <div class="content" id="box-content-9">
+                  <div class="column">
+                    <ul class="navi_inline">
+                      <li class="abstract_method"><a href="Simulations.ISymplectic.step.html">step</a></li>
+                    </ul>
+                  </div>
+                  <div class="column">
+                    <ul class="navi_inline">
+                      <li class="abstract_method"><a href="Simulations.ISymplectic.getH.html">getH</a></li>
+                    </ul>
+                  </div>
+                  <div class="column">
+                    <ul class="navi_inline">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><br/>
+          <div class="site_footer">Generated by <a href="http://www.valadoc.org/">Valadoc</a>
+          </div>
+        </body>
+      </html>
