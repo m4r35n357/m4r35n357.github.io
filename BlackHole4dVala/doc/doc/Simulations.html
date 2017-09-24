@@ -29,11 +29,13 @@
           <li class="interface"><a href="Simulations.ISymplectic.html">ISymplectic</a></li>
           <li class="class"><a href="Simulations.BhSymp.html">BhSymp</a></li>
           <li class="class"><a href="Simulations.Body.html">Body</a></li>
-          <li class="class"><a href="Simulations.EulerCromer.html">EulerCromer</a></li>
-          <li class="class"><a href="Simulations.ForestRuth.html">ForestRuth</a></li>
+          <li class="class"><a href="Simulations.EightthOrder.html">EightthOrder</a></li>
+          <li class="class"><a href="Simulations.FirstOrder.html">FirstOrder</a></li>
+          <li class="class"><a href="Simulations.FourthOrder.html">FourthOrder</a></li>
           <li class="class"><a href="Simulations.NBody.html">NBody</a></li>
           <li class="class"><a href="Simulations.Newton.html">Newton</a></li>
-          <li class="class"><a href="Simulations.StormerVerlet.html">StormerVerlet</a></li>
+          <li class="class"><a href="Simulations.SecondOrder.html">SecondOrder</a></li>
+          <li class="class"><a href="Simulations.SixthOrder.html">SixthOrder</a></li>
           <li class="abstract_class"><a href="Simulations.Symplectic.html">Symplectic</a></li>
           <li class="method"><a href="Simulations.getIntegrator.html">getIntegrator</a></li>
           <li class="method"><a href="Simulations.main.html">main</a></li>
@@ -62,12 +64,16 @@
         <ul class="navi_inline">
           <li class="abstract_class"><a href="Simulations.Symplectic.html">Symplectic</a> - <span class="brief_description">Symplectic integrator 
               abstract superclass, leaves integration details to subclasses</span></li>
-          <li class="class"><a href="Simulations.EulerCromer.html">EulerCromer</a> - <span class="brief_description">First-order symplectic integrator
+          <li class="class"><a href="Simulations.FirstOrder.html">FirstOrder</a> - <span class="brief_description">First-order symplectic integrator 
               concrete subclass. This integrator is NOT time symmetrical.</span></li>
-          <li class="class"><a href="Simulations.StormerVerlet.html">StormerVerlet</a> - <span class="brief_description">Second-order symplectic 
+          <li class="class"><a href="Simulations.SecondOrder.html">SecondOrder</a> - <span class="brief_description">Second-order symplectic 
               integrator concrete subclass. This integrator is time symmetrical.</span></li>
-          <li class="class"><a href="Simulations.ForestRuth.html">ForestRuth</a> - <span class="brief_description">Fourth-order symplectic integrator 
+          <li class="class"><a href="Simulations.FourthOrder.html">FourthOrder</a> - <span class="brief_description">Fourth-order symplectic 
+              integrator concrete subclass. This integrator is time symmetrical.</span></li>
+          <li class="class"><a href="Simulations.SixthOrder.html">SixthOrder</a> - <span class="brief_description">Sixth-order symplectic integrator 
               concrete subclass. This integrator is time symmetrical.</span></li>
+          <li class="class"><a href="Simulations.EightthOrder.html">EightthOrder</a> - <span class="brief_description">Eightth-order symplectic 
+              integrator concrete subclass. This integrator is time symmetrical.</span></li>
           <li class="class"><a href="Simulations.BhSymp.html">BhSymp</a> - <span class="brief_description">A model for generating geodesics in the 
               Kerr-deSitter spacetime</span></li>
           <li class="class"><a href="Simulations.Body.html">Body</a> - <span class="brief_description">Description of a single Newtonian body using 
@@ -84,7 +90,7 @@
             <div class="leaf_brief_description"><span class="brief_description">Common entry point for all simulators based on symplectic integration,
                 reads in JSON data from stdin and executes a program according to the following table:</span>
             </div></li>
-          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Simulations.ISymplectic.html" class="interface">ISymplectic</a></span> <b><a href="Simulations.getIntegrator.html" class="method">getIntegrator</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="class">string</span></span> type)
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Simulations.ISymplectic.html" class="interface">ISymplectic</a></span> <b><a href="Simulations.getIntegrator.html" class="method">getIntegrator</a></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="class">string</span></span> type)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Static factory for producing subclass instances from its type argument
                 according to the following table:</span>

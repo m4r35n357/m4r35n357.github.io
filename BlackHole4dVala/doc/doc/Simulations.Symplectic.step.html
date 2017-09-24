@@ -28,22 +28,32 @@
         <hr class="navi_hr"/>
         <ul class="navi_main">
           <li class="creation_method"><a href="Simulations.Symplectic.Symplectic.html">Symplectic</a></li>
+          <li class="method"><a href="Simulations.Symplectic.base2.html">base2</a></li>
+          <li class="method"><a href="Simulations.Symplectic.base4.html">base4</a></li>
+          <li class="method"><a href="Simulations.Symplectic.base6.html">base6</a></li>
+          <li class="method"><a href="Simulations.Symplectic.base8.html">base8</a></li>
           <li class="method"><a href="Simulations.Symplectic.getH.html">getH</a></li>
           <li class="abstract_method">step</li>
-          <li class="field"><a href="Simulations.Symplectic.c_d.html">c_d</a></li>
+          <li class="field"><a href="Simulations.Symplectic.h.html">h</a></li>
+          <li class="field"><a href="Simulations.Symplectic.model.html">model</a></li>
+          <li class="field"><a href="Simulations.Symplectic.x1.html">x1</a></li>
+          <li class="field"><a href="Simulations.Symplectic.x3.html">x3</a></li>
+          <li class="field"><a href="Simulations.Symplectic.y1.html">y1</a></li>
+          <li class="field"><a href="Simulations.Symplectic.y3.html">y3</a></li>
+          <li class="field"><a href="Simulations.Symplectic.z1.html">z1</a></li>
+          <li class="field"><a href="Simulations.Symplectic.z3.html">z3</a></li>
         </ul>
       </div>
       <div class="site_content">
         <h1 class="main_title">step</h1>
         <hr class="main_hr"/>
         <h2 class="main_title">Description:</h2>
-        <div class="main_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><span class="abstract_method">step</span></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model)
+        <div class="main_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><span class="abstract_method">step</span></b> ()
         </div>
         <div class="description">
           <p>Subclasses should perform one integration step by executing alternating 
             <a href="Simulations.IModel.qUpdate.html" class="abstract_method">IModel.qUpdate</a> and 
-            <a href="Simulations.IModel.pUpdate.html" class="abstract_method">IModel.pUpdate</a> methods with the combined <span class="field">h
-            </span> and <a href="Simulations.Symplectic.c_d.html" class="field">c_d</a> array elements as parameters.</p>
+            <a href="Simulations.IModel.pUpdate.html" class="abstract_method">IModel.pUpdate</a> methods.</p>
           <h2 class="main_title">See also:</h2>
           <p><a href="Simulations.ISymplectic.step.html" class="abstract_method">ISymplectic.step</a></p>
         </div>

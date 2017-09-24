@@ -28,9 +28,20 @@
         <hr class="navi_hr"/>
         <ul class="navi_main">
           <li class="creation_method"><a href="Simulations.Symplectic.Symplectic.html">Symplectic</a></li>
+          <li class="method"><a href="Simulations.Symplectic.base2.html">base2</a></li>
+          <li class="method"><a href="Simulations.Symplectic.base4.html">base4</a></li>
+          <li class="method"><a href="Simulations.Symplectic.base6.html">base6</a></li>
+          <li class="method"><a href="Simulations.Symplectic.base8.html">base8</a></li>
           <li class="method"><a href="Simulations.Symplectic.getH.html">getH</a></li>
           <li class="abstract_method"><a href="Simulations.Symplectic.step.html">step</a></li>
-          <li class="field"><a href="Simulations.Symplectic.c_d.html">c_d</a></li>
+          <li class="field"><a href="Simulations.Symplectic.h.html">h</a></li>
+          <li class="field"><a href="Simulations.Symplectic.model.html">model</a></li>
+          <li class="field"><a href="Simulations.Symplectic.x1.html">x1</a></li>
+          <li class="field"><a href="Simulations.Symplectic.x3.html">x3</a></li>
+          <li class="field"><a href="Simulations.Symplectic.y1.html">y1</a></li>
+          <li class="field"><a href="Simulations.Symplectic.y3.html">y3</a></li>
+          <li class="field"><a href="Simulations.Symplectic.z1.html">z1</a></li>
+          <li class="field"><a href="Simulations.Symplectic.z3.html">z3</a></li>
         </ul>
       </div>
       <div class="site_content">
@@ -59,17 +70,19 @@
             <div class="content" id="box-content-4">
               <div class="column">
                 <ul class="navi_inline">
-                  <li class="class"><a href="Simulations.EulerCromer.html">EulerCromer</a></li>
+                  <li class="class"><a href="Simulations.EightthOrder.html">EightthOrder</a></li>
+                  <li class="class"><a href="Simulations.FirstOrder.html">FirstOrder</a></li>
                 </ul>
               </div>
               <div class="column">
                 <ul class="navi_inline">
-                  <li class="class"><a href="Simulations.ForestRuth.html">ForestRuth</a></li>
+                  <li class="class"><a href="Simulations.FourthOrder.html">FourthOrder</a></li>
+                  <li class="class"><a href="Simulations.SecondOrder.html">SecondOrder</a></li>
                 </ul>
               </div>
               <div class="column">
                 <ul class="navi_inline">
-                  <li class="class"><a href="Simulations.StormerVerlet.html">StormerVerlet</a></li>
+                  <li class="class"><a href="Simulations.SixthOrder.html">SixthOrder</a></li>
                 </ul>
               </div>
             </div>
@@ -81,7 +94,7 @@
           <h2 class="main_title">Content:</h2>
           <h3 class="main_title">Creation methods:</h3>
           <ul class="navi_inline">
-            <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <b><a href="Simulations.Symplectic.Symplectic.html" class="creation_method">Symplectic</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> h)
+            <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <b><a href="Simulations.Symplectic.Symplectic.html" class="creation_method">Symplectic</a></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h)
               </span>
               <div class="leaf_brief_description"><span class="brief_description">This is a protected constructor; use the static factory 
                   <a href="Simulations.getIntegrator.html" class="method">getIntegrator</a> to obtain a concrete subclass.</span>
@@ -89,12 +102,28 @@
           </ul>
           <h3 class="main_title">Methods:</h3>
           <ul class="navi_inline">
-            <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Simulations.Symplectic.step.html" class="abstract_method">step</a></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model)
+            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">void</span> <b><a href="Simulations.Symplectic.base2.html" class="method">base2</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> s)
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">Stormer-Verlet base integrator. Performs the following calls on 
+                  <a href="Simulations.IModel.html" class="interface">IModel</a> per iteration:</span>
+              </div></li>
+            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">void</span> <b><a href="Simulations.Symplectic.base4.html" class="method">base4</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> s)
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">Suzuki composition from 2nd order to 4th order</span>
+              </div></li>
+            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">void</span> <b><a href="Simulations.Symplectic.base6.html" class="method">base6</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> s)
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">Suzuki composition from 4th order to 6th order</span>
+              </div></li>
+            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">void</span> <b><a href="Simulations.Symplectic.base8.html" class="method">base8</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> s)
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">Suzuki composition from 6th order to 8th order</span>
+              </div></li>
+            <li class="abstract_method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">abstract</span> <span class="main_keyword">void</span> <b><a href="Simulations.Symplectic.step.html" class="abstract_method">step</a></b> ()
               </span>
               <div class="leaf_brief_description"><span class="brief_description">Subclasses should perform one integration step by executing 
                   alternating <a href="Simulations.IModel.qUpdate.html" class="abstract_method">IModel.qUpdate</a> and 
-                  <a href="Simulations.IModel.pUpdate.html" class="abstract_method">IModel.pUpdate</a> methods with the combined <span class="field">h
-                  </span> and <a href="Simulations.Symplectic.c_d.html" class="field">c_d</a> array elements as parameters.</span>
+                  <a href="Simulations.IModel.pUpdate.html" class="abstract_method">IModel.pUpdate</a> methods.</span>
               </div></li>
             <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Simulations.Symplectic.getH.html" class="method">getH</a></b> ()
               </span>
@@ -103,10 +132,37 @@
           </ul>
           <h3 class="main_title">Fields:</h3>
           <ul class="navi_inline">
-            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_basic_type"><span class="struct">double</span></span>[] <b><a href="Simulations.Symplectic.c_d.html" class="field">c_d</a></b>
+            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> <b><a href="Simulations.Symplectic.model.html" class="field">model</a></b>
               </span>
-              <div class="leaf_brief_description"><span class="brief_description">Symplectic coefficients (time-step multipliers) for a concrete 
-                  subclass</span>
+              <div class="leaf_brief_description"><span class="brief_description">The physical model, defined at subclass construction</span>
+              </div></li>
+            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Simulations.Symplectic.h.html" class="field">h</a></b>
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">Simulation time step, defined at subclass construction</span>
+              </div></li>
+            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Simulations.Symplectic.x1.html" class="field">x1</a></b>
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">Suzuki composition coefficients</span>
+              </div></li>
+            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Simulations.Symplectic.y1.html" class="field">y1</a></b>
+              </span>
+              <div class="leaf_brief_description">
+              </div></li>
+            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Simulations.Symplectic.z1.html" class="field">z1</a></b>
+              </span>
+              <div class="leaf_brief_description">
+              </div></li>
+            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Simulations.Symplectic.x3.html" class="field">x3</a></b>
+              </span>
+              <div class="leaf_brief_description">
+              </div></li>
+            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Simulations.Symplectic.y3.html" class="field">y3</a></b>
+              </span>
+              <div class="leaf_brief_description">
+              </div></li>
+            <li class="field"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Simulations.Symplectic.z3.html" class="field">z3</a></b>
+              </span>
+              <div class="leaf_brief_description">
               </div></li>
           </ul>
           <h3 class="main_title">Inherited Members:</h3>
