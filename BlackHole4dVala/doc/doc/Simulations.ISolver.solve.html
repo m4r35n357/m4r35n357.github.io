@@ -34,7 +34,7 @@
         <h1 class="main_title">solve</h1>
         <hr class="main_hr"/>
         <h2 class="main_title">Description:</h2>
-        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><span class="struct">int64</span></span>[] <b><span class="abstract_method">solve</span></b> (<span class="main_type"><a href="Simulations.ISymplectic.html" class="interface">ISymplectic</a></span> integrator, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">int64</span></span> tr)
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">abstract</span> <span class="main_basic_type"><span class="struct">int64</span></span>[] <b><span class="abstract_method">solve</span></b> (<span class="main_type"><a href="Simulations.ISymplectic.html" class="interface">ISymplectic</a></span> integrator, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">int64</span></span> tr)
         </div>
         <div class="description">
           <p>Externally visible method. It sets up, controls and terminates the simulation, writing its data to stdout.</p>
@@ -46,6 +46,12 @@
               <td class="main_parameter_table_name">integrator</td>
               <td>
                 <p>the selected implementation </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="main_parameter_table_name">h</td>
+              <td>
+                <p>the time step </p>
               </td>
             </tr>
             <tr>
