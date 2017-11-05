@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Integrators.SecondOrder &ndash; doc &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Integrators.SecondOrder &ndash; doc Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">doc</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Integrators.html">Integrators</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">SecondOrder</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="creation_method"><a href="Integrators.SecondOrder.SecondOrder.html">SecondOrder</a></li>
+          <li class="method"><a href="Integrators.SecondOrder.base2.html">base2</a></li>
+          <li class="virtual_method"><a href="Integrators.SecondOrder.step.html">step</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">SecondOrder</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Integrators.SecondOrder" alt="Object hierarchy for SecondOrder" src="img/Integrators.SecondOrder.png"/>
+
+      <map id="Integrators.SecondOrder" name="Integrators.SecondOrder">
+<area shape="rect" id="node1" href="Integrators.SecondOrder.html" title="Integrators.SecondOrder" alt="" coords="50,197,250,245"/>
+<area shape="rect" id="node2" href="Integrators.SymplecticBase.html" title="Integrators.SymplecticBase" alt="" coords="39,101,261,149"/>
+<area shape="rect" id="node4" href="Integrators.ISymplectic.html" title="Integrators.ISymplectic" alt="" coords="143,5,336,53"/>
+</map>
+
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">SecondOrder</span></b> : <span class="main_type"><a href="Integrators.SymplecticBase.html" class="abstract_class">SymplecticBase</a></span>
+        </div>
+        <div class="description">
+          <p>Second-order symplectic integrator concrete subclass. This integrator is time symmetrical.</p>
+        </div>
+        <div class="box">
+          <div class="headline">
+            <div class="text">All known sub-classes:</div>
+            <div class="toggle">
+              <img onclick="toggle_box  (this, 'box-content-26')" src="../coll_open.png">&nbsp;</div>
+            </div>
+            <div class="content" id="box-content-26">
+              <div class="column">
+                <ul class="navi_inline">
+                  <li class="class"><a href="Integrators.EightthOrderKahanLi17o8b.html">EightthOrderKahanLi17o8b</a></li>
+                  <li class="class"><a href="Integrators.EightthOrderSuzuki.html">EightthOrderSuzuki</a></li>
+                  <li class="class"><a href="Integrators.EightthOrderYoshida.html">EightthOrderYoshida</a></li>
+                </ul>
+              </div>
+              <div class="column">
+                <ul class="navi_inline">
+                  <li class="class"><a href="Integrators.FourthOrderSuzuki.html">FourthOrderSuzuki</a></li>
+                  <li class="class"><a href="Integrators.FourthOrderYoshida.html">FourthOrderYoshida</a></li>
+                  <li class="abstract_class"><a href="Integrators.GenericComposer.html">GenericComposer</a></li>
+                </ul>
+              </div>
+              <div class="column">
+                <ul class="navi_inline">
+                  <li class="class"><a href="Integrators.SixthOrderKahanLi9o6b.html">SixthOrderKahanLi9o6b</a></li>
+                  <li class="class"><a href="Integrators.SixthOrderSuzuki.html">SixthOrderSuzuki</a></li>
+                  <li class="class"><a href="Integrators.SixthOrderYoshida.html">SixthOrderYoshida</a></li>
+                </ul>
+              </div>
+            </div>
+          </div><br/>
+          <div class="namespace_note"><b>Namespace:</b> <a href="Integrators.html">Integrators</a>
+          </div>
+          <div class="package_note"><b>Package:</b> <a href="index.htm">doc</a>
+          </div>
+          <h2 class="main_title">Content:</h2>
+          <h3 class="main_title">Creation methods:</h3>
+          <ul class="navi_inline">
+            <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Integrators.SecondOrder.SecondOrder.html" class="creation_method">SecondOrder</a></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h)
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description"></span>
+              </div></li>
+          </ul>
+          <h3 class="main_title">Methods:</h3>
+          <ul class="navi_inline">
+            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">protected</span> <span class="main_keyword">void</span> <b><a href="Integrators.SecondOrder.base2.html" class="method">base2</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> s)
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">Stormer-Verlet base integrator. Performs the following calls on 
+                  <a href="Simulations.IModel.html" class="interface">Simulations.IModel</a> per iteration:</span>
+              </div></li>
+            <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">override</span> <span class="main_keyword">void</span> <b><a href="Integrators.SecondOrder.step.html" class="virtual_method">step</a></b> ()
+              </span>
+              <div class="leaf_brief_description"><span class="brief_description">2nd order integration step. Calls 
+                  <a href="Integrators.SecondOrder.base2.html" class="method">base2</a> with s = 1.</span>
+              </div></li>
+          </ul>
+          <h3 class="main_title">Inherited Members:</h3>
+          <div class="box">
+            <div class="headline">
+              <div class="text">All known members inherited from class Integrators.SymplecticBase</div>
+              <div class="toggle">
+                <img onclick="toggle_box  (this, 'box-content-27')" src="../coll_open.png">&nbsp;</div>
+              </div>
+              <div class="content" id="box-content-27">
+                <div class="column">
+                  <ul class="navi_inline">
+                    <li class="abstract_method"><a href="Integrators.SymplecticBase.step.html">step</a></li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <ul class="navi_inline">
+                    <li class="field"><a href="Integrators.SymplecticBase.model.html">model</a></li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <ul class="navi_inline">
+                    <li class="field"><a href="Integrators.SymplecticBase.h.html">h</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="headline">
+                <div class="text">All known members inherited from class GLib.Object</div>
+                <div class="toggle">
+                  <img onclick="toggle_box  (this, 'box-content-28')" src="../coll_open.png">&nbsp;</div>
+                </div>
+                <div class="content" id="box-content-28">
+                  <div class="column">
+                    <ul class="navi_inline">
+                      <li class="static_method">@new</li>
+                      <li class="static_method">newv</li>
+                      <li class="static_method">new_valist</li>
+                      <li class="method">get_type</li>
+                      <li class="method">get_class</li>
+                      <li class="method">@ref</li>
+                      <li class="method">unref</li>
+                      <li class="method">ref_sink</li>
+                      <li class="method">weak_ref</li>
+                      <li class="method">weak_unref</li>
+                      <li class="method">add_weak_pointer</li>
+                      <li class="method">remove_weak_pointer</li>
+                    </ul>
+                  </div>
+                  <div class="column">
+                    <ul class="navi_inline">
+                      <li class="method">@get</li>
+                      <li class="method">@set</li>
+                      <li class="method">get_property</li>
+                      <li class="method">set_property</li>
+                      <li class="method">get_data</li>
+                      <li class="method">set_data</li>
+                      <li class="method">set_data_full</li>
+                      <li class="method">steal_data</li>
+                      <li class="method">get_qdata</li>
+                      <li class="method">set_qdata</li>
+                      <li class="method">set_qdata_full</li>
+                      <li class="method">steal_qdata</li>
+                    </ul>
+                  </div>
+                  <div class="column">
+                    <ul class="navi_inline">
+                      <li class="method">freeze_notify</li>
+                      <li class="method">thaw_notify</li>
+                      <li class="virtual_method">dispose</li>
+                      <li class="virtual_method">constructed</li>
+                      <li class="method">notify_property</li>
+                      <li class="method">connect</li>
+                      <li class="method">disconnect</li>
+                      <li class="method">add_toggle_ref</li>
+                      <li class="method">remove_toggle_ref</li>
+                      <li class="method">bind_property</li>
+                      <li class="signal">notify</li>
+                      <li class="field">ref_count</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="box">
+                <div class="headline">
+                  <div class="text">All known members inherited from interface Integrators.ISymplectic</div>
+                  <div class="toggle">
+                    <img onclick="toggle_box  (this, 'box-content-29')" src="../coll_open.png">&nbsp;</div>
+                  </div>
+                  <div class="content" id="box-content-29">
+                    <div class="column">
+                      <ul class="navi_inline">
+                        <li class="abstract_method"><a href="Integrators.ISymplectic.step.html">step</a></li>
+                      </ul>
+                    </div>
+                    <div class="column">
+                      <ul class="navi_inline">
+                      </ul>
+                    </div>
+                    <div class="column">
+                      <ul class="navi_inline">
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><br/>
+            <div class="site_footer">Generated by <a href="http://www.valadoc.org/">Valadoc</a>
+            </div>
+          </body>
+        </html>

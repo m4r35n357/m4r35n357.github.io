@@ -37,12 +37,12 @@
         <h1 class="main_title">solve</h1>
         <hr class="main_hr"/>
         <h2 class="main_title">Description:</h2>
-        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">int64</span></span>[] <b><span class="method">solve</span></b> (<span class="main_type"><a href="Simulations.ISymplectic.html" class="interface">ISymplectic</a></span> integrator, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">int64</span></span> tr)
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">int64</span></span>[] <b><span class="method">solve</span></b> (<span class="main_type"><a href="Integrators.ISymplectic.html" class="interface">ISymplectic</a></span> integrator, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">int64</span></span> tr)
         </div>
         <div class="description">
           <p>Externally visible method. It sets up, controls and terminates the simulation, writing its data to stdout.</p>
-          <p>Sole method called by main(), calls <a href="Simulations.ISymplectic.step.html" class="abstract_method">ISymplectic.step</a> on the 
-            selected integrator once per iteration</p>
+          <p>Sole method called by main(), calls <a href="Integrators.ISymplectic.step.html" class="abstract_method">Integrators.ISymplectic.step</a> 
+            on the selected integrator once per iteration</p>
           <h2 class="main_title">See also:</h2>
           <p><a href="Simulations.ISolver.solve.html" class="abstract_method">ISolver.solve</a></p>
         </div>

@@ -25,20 +25,12 @@
         <ul class="navi_main">
           <li class="interface"><a href="Simulations.IModel.html">IModel</a></li>
           <li class="interface"><a href="Simulations.ISolver.html">ISolver</a></li>
-          <li class="interface"><a href="Simulations.ISymplectic.html">ISymplectic</a></li>
           <li class="class"><a href="Simulations.Bh3d.html">Bh3d</a></li>
           <li class="class"><a href="Simulations.Body.html">Body</a></li>
-          <li class="class"><a href="Simulations.EightthOrder.html">EightthOrder</a></li>
-          <li class="class"><a href="Simulations.FirstOrder.html">FirstOrder</a></li>
-          <li class="class"><a href="Simulations.FourthOrder.html">FourthOrder</a></li>
           <li class="class"><a href="Simulations.NBody.html">NBody</a></li>
           <li class="class"><a href="Simulations.Newton.html">Newton</a></li>
           <li class="class"><a href="Simulations.Oscillator.html">Oscillator</a></li>
           <li class="class"><a href="Simulations.Pendulum.html">Pendulum</a></li>
-          <li class="class"><a href="Simulations.SecondOrder.html">SecondOrder</a></li>
-          <li class="class"><a href="Simulations.SixthOrder.html">SixthOrder</a></li>
-          <li class="abstract_class"><a href="Simulations.Symplectic.html">Symplectic</a></li>
-          <li class="method"><a href="Simulations.getIntegrator.html">getIntegrator</a></li>
         </ul>
       </div>
       <div class="site_content">
@@ -52,43 +44,21 @@
               physical model</span></li>
           <li class="interface"><a href="Simulations.IModel.html">IModel</a> - <span class="brief_description">Internal interface for the symplectic 
               integrator to access and update the model</span></li>
-          <li class="interface"><a href="Simulations.ISymplectic.html">ISymplectic</a> - <span class="brief_description">Internal interface for a 
-              model to drive the symplectic integrator</span></li>
         </ul>
         <h3 class="main_title">Classes:</h3>
         <ul class="navi_inline">
-          <li class="class"><a href="Simulations.Bh3d.html">Bh3d</a> - <span class="brief_description">A model for generating geodesics in the Kerr-
-              deSitter spacetime</span></li>
+          <li class="class"><a href="Simulations.Oscillator.html">Oscillator</a> - <span class="brief_description">Hamiltonian model for a Harmonic 
+              Oscillator</span></li>
+          <li class="class"><a href="Simulations.Pendulum.html">Pendulum</a> - <span class="brief_description">Hamiltonian model for a simple pendulum
+            </span></li>
+          <li class="class"><a href="Simulations.Newton.html">Newton</a> - <span class="brief_description">Hamiltonian model for Newtonian central 
+              body orbit</span></li>
           <li class="class"><a href="Simulations.Body.html">Body</a> - <span class="brief_description">Description of a single Newtonian body using 
               its coordinates, momenta and mass</span></li>
           <li class="class"><a href="Simulations.NBody.html">NBody</a> - <span class="brief_description">Hamiltonian model for Newtonian N body orbits
             </span></li>
-          <li class="class"><a href="Simulations.Newton.html">Newton</a> - <span class="brief_description">Hamiltonian model for Newtonian central 
-              body orbit</span></li>
-          <li class="class"><a href="Simulations.Pendulum.html">Pendulum</a> - <span class="brief_description">Hamiltonian model for a simple pendulum
-            </span></li>
-          <li class="class"><a href="Simulations.Oscillator.html">Oscillator</a> - <span class="brief_description">Hamiltonian model for a Harmonic 
-              Oscillator</span></li>
-          <li class="abstract_class"><a href="Simulations.Symplectic.html">Symplectic</a> - <span class="brief_description">Symplectic integrator 
-              abstract superclass, leaves integration method selection to subclasses</span></li>
-          <li class="class"><a href="Simulations.FirstOrder.html">FirstOrder</a> - <span class="brief_description">First-order symplectic integrator 
-              concrete subclass. This integrator is NOT time symmetrical.</span></li>
-          <li class="class"><a href="Simulations.SecondOrder.html">SecondOrder</a> - <span class="brief_description">Second-order symplectic 
-              integrator concrete subclass. This integrator is time symmetrical.</span></li>
-          <li class="class"><a href="Simulations.FourthOrder.html">FourthOrder</a> - <span class="brief_description">Fourth-order symplectic 
-              integrator concrete subclass. This integrator is time symmetrical.</span></li>
-          <li class="class"><a href="Simulations.SixthOrder.html">SixthOrder</a> - <span class="brief_description">Sixth-order symplectic integrator 
-              concrete subclass. This integrator is time symmetrical.</span></li>
-          <li class="class"><a href="Simulations.EightthOrder.html">EightthOrder</a> - <span class="brief_description">Eightth-order symplectic 
-              integrator concrete subclass. This integrator is time symmetrical.</span></li>
-        </ul>
-        <h3 class="main_title">Functions:</h3>
-        <ul class="navi_inline">
-          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Simulations.ISymplectic.html" class="interface">ISymplectic</a></span> <b><a href="Simulations.getIntegrator.html" class="method">getIntegrator</a></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="class">string</span></span> type)
-            </span>
-            <div class="leaf_brief_description"><span class="brief_description">Static factory for producing subclass instances from its type argument
-                according to the following table:</span>
-            </div></li>
+          <li class="class"><a href="Simulations.Bh3d.html">Bh3d</a> - <span class="brief_description">A model for generating geodesics in the Kerr-
+              deSitter spacetime</span></li>
         </ul>
       </div>
     </div><br/>
