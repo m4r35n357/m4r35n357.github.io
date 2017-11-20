@@ -22,7 +22,7 @@
           <li class="namespace"><a href="Generators.html">Generators</a></li>
           <li class="namespace"><a href="Integrators.html">Integrators</a></li>
           <li class="namespace"><a href="JsonParser.html">JsonParser</a></li>
-          <li class="namespace"><a href="Simulations.html">Simulations</a></li>
+          <li class="namespace"><a href="Models.html">Models</a></li>
           <li class="method"><a href="main.html">main</a></li>
         </ul>
       </div>
@@ -43,9 +43,8 @@
           <h3 class="main_title">Classes:</h3>
           <ul class="navi_inline">
             <li class="class"><a href="Generators.Particle.html">Particle</a> - <span class="brief_description">Turns fixed parameters and other 
-                constraints into initial conditions data suitable as input to <a href="Simulations.Bh3d.html" class="class">Simulations.Bh3d</a> 
-                (passing some items directly through to the output data), alternatively takes the data and creates potential plots from it.</span>
-            </li>
+                constraints into initial conditions data suitable as input to <a href="Models.Bh3d.html" class="class">Models.Bh3d</a> (passing some 
+                items directly through to the output data), alternatively takes the data and creates potential plots from it.</span></li>
             <li class="class"><a href="Generators.Light.html">Light</a> - <span class="brief_description">Generates initial conditions and potentials 
                 for light</span></li>
           </ul>
@@ -62,30 +61,25 @@
             <li class="class"><a href="Integrators.FirstOrder.html">FirstOrder</a> - <span class="brief_description">First-order symplectic integrator
                 concrete subclass. This integrator is NOT time symmetrical.</span></li>
             <li class="class"><a href="Integrators.SecondOrder.html">SecondOrder</a> - <span class="brief_description">Second-order symplectic 
-                integrator concrete subclass. This integrator is time symmetrical.</span></li>
-            <li class="class"><a href="Integrators.FourthOrderSuzuki.html">FourthOrderSuzuki</a> - <span class="brief_description">Fourth-order 
-                symplectic integrator concrete subclass using Suzuki composition. This integrator is time symmetrical.</span></li>
-            <li class="class"><a href="Integrators.SixthOrderSuzuki.html">SixthOrderSuzuki</a> - <span class="brief_description">Sixth-order 
-                symplectic integrator concrete subclass using Suzuki composition. This integrator is time symmetrical.</span></li>
-            <li class="class"><a href="Integrators.EightthOrderSuzuki.html">EightthOrderSuzuki</a> - <span class="brief_description">Eightth-order 
-                symplectic integrator concrete subclass using Suzuki composition. This integrator is time symmetrical.</span></li>
-            <li class="class"><a href="Integrators.FourthOrderYoshida.html">FourthOrderYoshida</a> - <span class="brief_description">Fourth-order 
-                symplectic integrator concrete subclass using Yoshida composition. This integrator is time symmetrical.</span></li>
-            <li class="class"><a href="Integrators.SixthOrderYoshida.html">SixthOrderYoshida</a> - <span class="brief_description">Sixth-order 
-                symplectic integrator concrete subclass using Yoshida composition. This integrator is time symmetrical.</span></li>
-            <li class="class"><a href="Integrators.EightthOrderYoshida.html">EightthOrderYoshida</a> - <span class="brief_description">Eightth-order 
-                symplectic integrator concrete subclass using Yoshida composition. This integrator is time symmetrical.</span></li>
+                integrator concrete subclass.</span></li>
+            <li class="abstract_class"><a href="Integrators.ExplicitComposed.html">ExplicitComposed</a> - <span class="brief_description">Abstract 
+                base for compositions that are defined by explicit formulas (Yoshida, Suzuki and others)).</span></li>
+            <li class="class"><a href="Integrators.FourthOrder.html">FourthOrder</a> - <span class="brief_description">Fourth-order symplectic 
+                integrator concrete subclass using various compositions.</span></li>
+            <li class="class"><a href="Integrators.SixthOrder.html">SixthOrder</a> - <span class="brief_description">Sixth-order symplectic integrator
+                concrete subclass using various compositions.</span></li>
+            <li class="class"><a href="Integrators.EightthOrder.html">EightthOrder</a> - <span class="brief_description">Eightth-order symplectic 
+                integrator concrete subclass using various compositions.</span></li>
             <li class="abstract_class"><a href="Integrators.GenericComposer.html">GenericComposer</a> - <span class="brief_description">Generic 
                 composed integrator abstract superclass, leaves integration method selection to subclasses</span></li>
             <li class="class"><a href="Integrators.SixthOrderKahanLi9o6b.html">SixthOrderKahanLi9o6b</a> - <span class="brief_description">Sixth-order
-                symplectic integrator concrete subclass using Kahan-Li composition s9odr6b. This integrator is time symmetrical.</span></li>
+                symplectic integrator concrete subclass using Kahan-Li composition s9odr6b.</span></li>
             <li class="class"><a href="Integrators.EightthOrderKahanLi17o8b.html">EightthOrderKahanLi17o8b</a> - <span class="brief_description">
-                Eightth-order symplectic integrator concrete subclass using Kahan-Li composition s17odr8b. This integrator is time symmetrical.</span>
-            </li>
+                Eightth-order symplectic integrator concrete subclass using Kahan-Li composition s17odr8b.</span></li>
           </ul>
           <h3 class="main_title">Methods:</h3>
           <ul class="navi_inline">
-            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Integrators.ISymplectic.html" class="interface">ISymplectic</a></span> <b><a href="Integrators.getIntegrator.html" class="method">getIntegrator</a></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="class">string</span></span> type)
+            <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Integrators.ISymplectic.html" class="interface">ISymplectic</a></span> <b><a href="Integrators.getIntegrator.html" class="method">getIntegrator</a></b> (<span class="main_type"><a href="Models.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="class">string</span></span> type, <span class="main_basic_type"><span class="struct">int64</span></span> stages)
               </span>
               <div class="leaf_brief_description"><span class="brief_description">Static factory for producing subclass instances from its type 
                   argument according to the following table:</span>
@@ -100,27 +94,29 @@
               <div class="leaf_brief_description"><span class="brief_description">Parse JSON initial conditions data from stdin</span>
               </div></li>
           </ul>
-          <li class="namespace"><a href="Simulations.html">Simulations</a> - </li>
+          <li class="namespace"><a href="Models.html">Models</a> - </li>
           <h3 class="main_title">Interfaces:</h3>
           <ul class="navi_inline">
-            <li class="interface"><a href="Simulations.ISolver.html">ISolver</a> - <span class="brief_description">External user interface for the 
-                physical model</span></li>
-            <li class="interface"><a href="Simulations.IModel.html">IModel</a> - <span class="brief_description">Internal interface for the symplectic
+            <li class="interface"><a href="Models.ISolver.html">ISolver</a> - <span class="brief_description">External user interface for the physical
+                model</span></li>
+            <li class="interface"><a href="Models.IModel.html">IModel</a> - <span class="brief_description">Internal interface for the symplectic 
                 integrator to access and update the model</span></li>
           </ul>
           <h3 class="main_title">Classes:</h3>
           <ul class="navi_inline">
-            <li class="class"><a href="Simulations.Oscillator.html">Oscillator</a> - <span class="brief_description">Hamiltonian model for a Harmonic 
+            <li class="class"><a href="Models.Oscillator.html">Oscillator</a> - <span class="brief_description">Hamiltonian model for a Harmonic 
                 Oscillator</span></li>
-            <li class="class"><a href="Simulations.Pendulum.html">Pendulum</a> - <span class="brief_description">Hamiltonian model for a simple 
-                pendulum</span></li>
-            <li class="class"><a href="Simulations.Newton.html">Newton</a> - <span class="brief_description">Hamiltonian model for Newtonian central 
-                body orbit</span></li>
-            <li class="class"><a href="Simulations.Body.html">Body</a> - <span class="brief_description">Description of a single Newtonian body using 
-                its coordinates, momenta and mass</span></li>
-            <li class="class"><a href="Simulations.NBody.html">NBody</a> - <span class="brief_description">Hamiltonian model for Newtonian N body 
-                orbits</span></li>
-            <li class="class"><a href="Simulations.Bh3d.html">Bh3d</a> - <span class="brief_description">A model for generating geodesics in the Kerr-
+            <li class="class"><a href="Models.Pendulum.html">Pendulum</a> - <span class="brief_description">Hamiltonian model for a simple pendulum
+              </span></li>
+            <li class="class"><a href="Models.Newton.html">Newton</a> - <span class="brief_description">Hamiltonian model for Newtonian central body 
+                orbit</span></li>
+            <li class="class"><a href="Models.HenonHeiles.html">HenonHeiles</a> - <span class="brief_description">Hamiltonian model for Henon-Heiles 
+                Potential</span></li>
+            <li class="class"><a href="Models.Body.html">Body</a> - <span class="brief_description">Description of a single Newtonian body using its 
+                coordinates, momenta and mass</span></li>
+            <li class="class"><a href="Models.NBody.html">NBody</a> - <span class="brief_description">Hamiltonian model for Newtonian N body orbits
+              </span></li>
+            <li class="class"><a href="Models.Bh3d.html">Bh3d</a> - <span class="brief_description">A model for generating geodesics in the Kerr-
                 deSitter spacetime</span></li>
           </ul>
         </ul>

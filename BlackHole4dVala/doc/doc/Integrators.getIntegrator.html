@@ -24,17 +24,15 @@
         <hr class="navi_hr"/>
         <ul class="navi_main">
           <li class="interface"><a href="Integrators.ISymplectic.html">ISymplectic</a></li>
+          <li class="class"><a href="Integrators.EightthOrder.html">EightthOrder</a></li>
           <li class="class"><a href="Integrators.EightthOrderKahanLi17o8b.html">EightthOrderKahanLi17o8b</a></li>
-          <li class="class"><a href="Integrators.EightthOrderSuzuki.html">EightthOrderSuzuki</a></li>
-          <li class="class"><a href="Integrators.EightthOrderYoshida.html">EightthOrderYoshida</a></li>
+          <li class="abstract_class"><a href="Integrators.ExplicitComposed.html">ExplicitComposed</a></li>
           <li class="class"><a href="Integrators.FirstOrder.html">FirstOrder</a></li>
-          <li class="class"><a href="Integrators.FourthOrderSuzuki.html">FourthOrderSuzuki</a></li>
-          <li class="class"><a href="Integrators.FourthOrderYoshida.html">FourthOrderYoshida</a></li>
+          <li class="class"><a href="Integrators.FourthOrder.html">FourthOrder</a></li>
           <li class="abstract_class"><a href="Integrators.GenericComposer.html">GenericComposer</a></li>
           <li class="class"><a href="Integrators.SecondOrder.html">SecondOrder</a></li>
+          <li class="class"><a href="Integrators.SixthOrder.html">SixthOrder</a></li>
           <li class="class"><a href="Integrators.SixthOrderKahanLi9o6b.html">SixthOrderKahanLi9o6b</a></li>
-          <li class="class"><a href="Integrators.SixthOrderSuzuki.html">SixthOrderSuzuki</a></li>
-          <li class="class"><a href="Integrators.SixthOrderYoshida.html">SixthOrderYoshida</a></li>
           <li class="abstract_class"><a href="Integrators.SymplecticBase.html">SymplecticBase</a></li>
           <li class="method">getIntegrator</li>
         </ul>
@@ -43,7 +41,7 @@
         <h1 class="main_title">getIntegrator</h1>
         <hr class="main_hr"/>
         <h2 class="main_title">Description:</h2>
-        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Integrators.ISymplectic.html" class="interface">ISymplectic</a></span> <b><span class="method">getIntegrator</span></b> (<span class="main_type"><a href="Simulations.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="class">string</span></span> type)
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Integrators.ISymplectic.html" class="interface">ISymplectic</a></span> <b><span class="method">getIntegrator</span></b> (<span class="main_type"><a href="Models.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="class">string</span></span> type, <span class="main_basic_type"><span class="struct">int64</span></span> stages)
         </div>
         <div class="description">
           <p>Static factory for producing subclass instances from its type argument according to the following table:</p>
@@ -64,39 +62,18 @@
               <td class="main_table" colspan="1" rowspan="1" style="">2nd Order, Symplectic, Reversible</td>
             </tr>
             <tr>
-              <td class="main_table" colspan="1" rowspan="1" style="">"sb4"</td>
-              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.FourthOrderSuzuki.html" class="class">FourthOrderSuzuki</a>
-              </td>
+              <td class="main_table" colspan="1" rowspan="1" style="">"b4"</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.FourthOrder.html" class="class">FourthOrder</a></td>
               <td class="main_table" colspan="1" rowspan="1" style="">4th Order, Symplectic, Reversible</td>
             </tr>
             <tr>
-              <td class="main_table" colspan="1" rowspan="1" style="">"sb6"</td>
-              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.SixthOrderSuzuki.html" class="class">SixthOrderSuzuki</a>
-              </td>
+              <td class="main_table" colspan="1" rowspan="1" style="">"b6"</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.SixthOrder.html" class="class">SixthOrder</a></td>
               <td class="main_table" colspan="1" rowspan="1" style="">6th Order, Symplectic, Reversible</td>
             </tr>
             <tr>
-              <td class="main_table" colspan="1" rowspan="1" style="">"sb8"</td>
-              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.EightthOrderSuzuki.html" class="class">EightthOrderSuzuki
-                </a></td>
-              <td class="main_table" colspan="1" rowspan="1" style="">8th Order, Symplectic, Reversible</td>
-            </tr>
-            <tr>
-              <td class="main_table" colspan="1" rowspan="1" style="">"yb4"</td>
-              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.FourthOrderYoshida.html" class="class">FourthOrderYoshida
-                </a></td>
-              <td class="main_table" colspan="1" rowspan="1" style="">4th Order, Symplectic, Reversible</td>
-            </tr>
-            <tr>
-              <td class="main_table" colspan="1" rowspan="1" style="">"yb6"</td>
-              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.SixthOrderYoshida.html" class="class">SixthOrderYoshida</a>
-              </td>
-              <td class="main_table" colspan="1" rowspan="1" style="">6th Order, Symplectic, Reversible</td>
-            </tr>
-            <tr>
-              <td class="main_table" colspan="1" rowspan="1" style="">"yb8"</td>
-              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.EightthOrderYoshida.html" class="class">EightthOrderYoshida
-                </a></td>
+              <td class="main_table" colspan="1" rowspan="1" style="">"b8"</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.EightthOrder.html" class="class">EightthOrder</a></td>
               <td class="main_table" colspan="1" rowspan="1" style="">8th Order, Symplectic, Reversible</td>
             </tr>
             <tr>
