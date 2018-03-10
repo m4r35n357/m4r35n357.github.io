@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Integrators.Symplectic.Symplectic &ndash; doc &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Integrators.Symplectic.Symplectic &ndash; doc Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">doc</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Integrators.html">Integrators</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class"><a href="Integrators.Symplectic.html">Symplectic</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="delegate"><a href="Integrators.Symplectic.BaseMethod.html">BaseMethod</a></li>
+          <li class="delegate"><a href="Integrators.Symplectic.Integrator.html">Integrator</a></li>
+          <li class="creation_method">Symplectic</li>
+          <li class="method"><a href="Integrators.Symplectic.base4.html">base4</a></li>
+          <li class="method"><a href="Integrators.Symplectic.base6.html">base6</a></li>
+          <li class="method"><a href="Integrators.Symplectic.composeSuzuki.html">composeSuzuki</a></li>
+          <li class="method"><a href="Integrators.Symplectic.eightthOrder.html">eightthOrder</a></li>
+          <li class="method"><a href="Integrators.Symplectic.firstOrder.html">firstOrder</a></li>
+          <li class="method"><a href="Integrators.Symplectic.fourthOrder.html">fourthOrder</a></li>
+          <li class="method"><a href="Integrators.Symplectic.secondOrder.html">secondOrder</a></li>
+          <li class="method"><a href="Integrators.Symplectic.sixthOrder.html">sixthOrder</a></li>
+          <li class="field"><a href="Integrators.Symplectic.c_d.html">c_d</a></li>
+          <li class="field"><a href="Integrators.Symplectic.h.html">h</a></li>
+          <li class="field"><a href="Integrators.Symplectic.integrator.html">integrator</a></li>
+          <li class="field"><a href="Integrators.Symplectic.model.html">model</a></li>
+          <li class="field"><a href="Integrators.Symplectic.x0.html">x0</a></li>
+          <li class="field"><a href="Integrators.Symplectic.x1.html">x1</a></li>
+          <li class="field"><a href="Integrators.Symplectic.y0.html">y0</a></li>
+          <li class="field"><a href="Integrators.Symplectic.y1.html">y1</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">Symplectic</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><span class="main_keyword">public</span> <b><span class="creation_method">Symplectic</span></b> (<span class="main_type"><a href="Models.IModel.html" class="interface">IModel</a></span> model, <span class="main_basic_type"><span class="struct">double</span></span> h, <span class="main_basic_type"><span class="class">string</span></span> label, <span class="main_basic_type"><span class="class">string</span></span> scheme)
+        </div>
+        <div class="description">
+          <p>This constructor produces instances from its label and scheme arguments according to the following tables:</p>
+          <table class="main_table">
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style=""><b>label</b></td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><b>Integrator Order</b></td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><b>Description</b></td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="">"b1"</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.Symplectic.firstOrder.html" class="method">firstOrder</a>
+              </td>
+              <td class="main_table" colspan="1" rowspan="1" style="">1st Order, Symplectic, NOT Reversible</td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="">"b2"</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.Symplectic.secondOrder.html" class="method">secondOrder</a>
+              </td>
+              <td class="main_table" colspan="1" rowspan="1" style="">2nd Order, Symplectic, Reversible</td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="">"b4"</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.Symplectic.fourthOrder.html" class="method">fourthOrder</a>
+              </td>
+              <td class="main_table" colspan="1" rowspan="1" style="">4th Order, Symplectic, Reversible</td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="">"b6"</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.Symplectic.sixthOrder.html" class="method">sixthOrder</a>
+              </td>
+              <td class="main_table" colspan="1" rowspan="1" style="">6th Order, Symplectic, Reversible</td>
+            </tr>
+            <tr>
+              <td class="main_table" colspan="1" rowspan="1" style="">"b8"</td>
+              <td class="main_table" colspan="1" rowspan="1" style=""><a href="Integrators.Symplectic.eightthOrder.html" class="method">eightthOrder
+                </a></td>
+              <td class="main_table" colspan="1" rowspan="1" style="">8th Order, Symplectic, Reversible</td>
+            </tr>
+          </table>
+          <h2 class="main_title">Parameters:</h2>
+          <table class="main_parameter_table">
+            <tr>
+              <td class="main_parameter_table_name">model</td>
+              <td>
+                <p>the model </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="main_parameter_table_name">h</td>
+              <td>
+                <p>the time step </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="main_parameter_table_name">label</td>
+              <td>
+                <p>the integrator order </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="main_parameter_table_name">scheme</td>
+              <td>
+                <p>the composition scheme </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="http://www.valadoc.org/">Valadoc</a>
+    </div>
+  </body>
+</html>

@@ -28,20 +28,29 @@
         <hr class="navi_hr"/>
         <ul class="navi_main">
           <li class="creation_method"><a href="Models.NBody.NBody.html">NBody</a></li>
+          <li class="method"><a href="Models.NBody.h.html">h</a></li>
+          <li class="method"><a href="Models.NBody.output.html">output</a></li>
           <li class="method"><a href="Models.NBody.pUpdate.html">pUpdate</a></li>
           <li class="method"><a href="Models.NBody.qUpdate.html">qUpdate</a></li>
+          <li class="method"><a href="Models.NBody.separation.html">separation</a></li>
           <li class="method">solve</li>
+          <li class="method"><a href="Models.NBody.trackCentreOfMass.html">trackCentreOfMass</a></li>
+          <li class="field"><a href="Models.NBody.bodies.html">bodies</a></li>
+          <li class="field"><a href="Models.NBody.errorLimit.html">errorLimit</a></li>
+          <li class="field"><a href="Models.NBody.g.html">g</a></li>
+          <li class="field"><a href="Models.NBody.m.html">m</a></li>
+          <li class="field"><a href="Models.NBody.n.html">n</a></li>
         </ul>
       </div>
       <div class="site_content">
         <h1 class="main_title">solve</h1>
         <hr class="main_hr"/>
         <h2 class="main_title">Description:</h2>
-        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">int64</span></span>[] <b><span class="method">solve</span></b> (<span class="main_type"><a href="Integrators.ISymplectic.html" class="interface">ISymplectic</a></span> integrator, <span class="main_basic_type"><span class="struct">double</span></span> step, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">int64</span></span> tr)
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">int64</span></span>[] <b><span class="method">solve</span></b> (<span class="main_type"><a href="Integrators.Symplectic.Integrator.html" class="delegate">Integrator</a></span> integrator, <span class="main_basic_type"><span class="struct">double</span></span> step, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">int64</span></span> tr)
         </div>
         <div class="description">
           <p>Externally visible method. It sets up, controls and terminates the simulation, writing its data to stdout.</p>
-          <p>Sole method called by main(), calls <a href="Integrators.ISymplectic.step.html" class="abstract_method">Integrators.ISymplectic.step</a> 
+          <p>Sole method called by main(), calls <a href="Integrators.Symplectic.integrator.html" class="field">Integrators.Symplectic.integrator</a> 
             on the selected integrator once per iteration</p>
           <h2 class="main_title">See also:</h2>
           <p><a href="Models.ISolver.solve.html" class="abstract_method">ISolver.solve</a></p>

@@ -28,9 +28,18 @@
         <hr class="navi_hr"/>
         <ul class="navi_main">
           <li class="creation_method"><a href="Models.NBody.NBody.html">NBody</a></li>
+          <li class="method"><a href="Models.NBody.h.html">h</a></li>
+          <li class="method"><a href="Models.NBody.output.html">output</a></li>
           <li class="method"><a href="Models.NBody.pUpdate.html">pUpdate</a></li>
           <li class="method"><a href="Models.NBody.qUpdate.html">qUpdate</a></li>
+          <li class="method"><a href="Models.NBody.separation.html">separation</a></li>
           <li class="method"><a href="Models.NBody.solve.html">solve</a></li>
+          <li class="method"><a href="Models.NBody.trackCentreOfMass.html">trackCentreOfMass</a></li>
+          <li class="field"><a href="Models.NBody.bodies.html">bodies</a></li>
+          <li class="field"><a href="Models.NBody.errorLimit.html">errorLimit</a></li>
+          <li class="field"><a href="Models.NBody.g.html">g</a></li>
+          <li class="field"><a href="Models.NBody.m.html">m</a></li>
+          <li class="field"><a href="Models.NBody.n.html">n</a></li>
         </ul>
       </div>
       <div class="site_content">
@@ -65,128 +74,163 @@
         </ul>
         <h3 class="main_title">Methods:</h3>
         <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Models.NBody.separation.html" class="method">separation</a></b> (<span class="main_type"><a href="Models.Body.html" class="class">Body</a></span> i, <span class="main_type"><a href="Models.Body.html" class="class">Body</a></span> j)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Euclidean distance between two bodies, i and j</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_keyword">void</span> <b><a href="Models.NBody.trackCentreOfMass.html" class="method">trackCentreOfMass</a></b> ()
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Compensate for drift in centre of mass</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Models.NBody.h.html" class="method">h</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
           <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Models.NBody.qUpdate.html" class="method">qUpdate</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> d)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Hamiltonian equations of motion - coordinate updates (dT/dp), called 
-                by <a href="Integrators.ISymplectic.step.html" class="abstract_method">Integrators.ISymplectic.step</a></span>
+                by <a href="Integrators.Symplectic.integrator.html" class="field">Integrators.Symplectic.integrator</a></span>
             </div></li>
           <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Models.NBody.pUpdate.html" class="method">pUpdate</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> c)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Hamiltonian equations of motion - momentum updates (dV/dq), called by 
-                <a href="Integrators.ISymplectic.step.html" class="abstract_method">Integrators.ISymplectic.step</a></span>
+                <a href="Integrators.Symplectic.integrator.html" class="field">Integrators.Symplectic.integrator</a></span>
             </div></li>
-          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">int64</span></span>[] <b><a href="Models.NBody.solve.html" class="method">solve</a></b> (<span class="main_type"><a href="Integrators.ISymplectic.html" class="interface">ISymplectic</a></span> integrator, <span class="main_basic_type"><span class="struct">double</span></span> step, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">int64</span></span> tr)
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">int64</span></span>[] <b><a href="Models.NBody.solve.html" class="method">solve</a></b> (<span class="main_type"><a href="Integrators.Symplectic.Integrator.html" class="delegate">Integrator</a></span> integrator, <span class="main_basic_type"><span class="struct">double</span></span> step, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">int64</span></span> tr)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Externally visible method. It sets up, controls and terminates the 
                 simulation, writing its data to stdout.</span>
             </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_keyword">void</span> <b><a href="Models.NBody.output.html" class="method">output</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> time, <span class="main_basic_type"><span class="struct">double</span></span> hNow, <span class="main_basic_type"><span class="struct">double</span></span> h0, <span class="main_basic_type"><span class="struct">double</span></span> error)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Write the simulated data to STDOUT as a JSON string</span>
+            </div></li>
+        </ul>
+        <h3 class="main_title">Fields:</h3>
+        <ul class="navi_inline">
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_type"><a href="Models.Body.html" class="class">Body</a></span>[] <b><a href="Models.NBody.bodies.html" class="field">bodies</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">int</span></span> <b><a href="Models.NBody.n.html" class="field">n</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Models.NBody.m.html" class="field">m</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Models.NBody.g.html" class="field">g</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="field"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Models.NBody.errorLimit.html" class="field">errorLimit</a></b>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
         </ul>
         <h3 class="main_title">Inherited Members:</h3>
         <div class="box">
-          <div class="headline">
-            <div class="text">All known members inherited from class GLib.Object</div>
-            <div class="toggle">
-              <img onclick="toggle_box  (this, 'box-content-13')" src="../coll_open.png">&nbsp;</div>
+          <div class="headline" onclick="toggle_box (this, 'box-content-13')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-13">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="static_method">@new</li>
+                <li class="static_method">new_valist</li>
+                <li class="static_method">newv</li>
+                <li class="static_method">new_with_properties</li>
+                <li class="method">add_toggle_ref</li>
+                <li class="method">add_weak_pointer</li>
+                <li class="method">bind_property</li>
+                <li class="method">connect</li>
+                <li class="virtual_method">constructed</li>
+                <li class="method">disconnect</li>
+                <li class="virtual_method">dispose</li>
+                <li class="method">dup_data</li>
+                <li class="method">dup_qdata</li>
+                <li class="method">freeze_notify</li>
+                <li class="method">@get</li>
+              </ul>
             </div>
-            <div class="content" id="box-content-13">
-              <div class="column">
-                <ul class="navi_inline">
-                  <li class="static_method">@new</li>
-                  <li class="static_method">newv</li>
-                  <li class="static_method">new_valist</li>
-                  <li class="method">get_type</li>
-                  <li class="method">get_class</li>
-                  <li class="method">@ref</li>
-                  <li class="method">unref</li>
-                  <li class="method">ref_sink</li>
-                  <li class="method">weak_ref</li>
-                  <li class="method">weak_unref</li>
-                  <li class="method">add_weak_pointer</li>
-                  <li class="method">remove_weak_pointer</li>
-                </ul>
-              </div>
-              <div class="column">
-                <ul class="navi_inline">
-                  <li class="method">@get</li>
-                  <li class="method">@set</li>
-                  <li class="method">get_property</li>
-                  <li class="method">set_property</li>
-                  <li class="method">get_data</li>
-                  <li class="method">set_data</li>
-                  <li class="method">set_data_full</li>
-                  <li class="method">steal_data</li>
-                  <li class="method">get_qdata</li>
-                  <li class="method">set_qdata</li>
-                  <li class="method">set_qdata_full</li>
-                  <li class="method">steal_qdata</li>
-                </ul>
-              </div>
-              <div class="column">
-                <ul class="navi_inline">
-                  <li class="method">freeze_notify</li>
-                  <li class="method">thaw_notify</li>
-                  <li class="virtual_method">dispose</li>
-                  <li class="virtual_method">constructed</li>
-                  <li class="method">notify_property</li>
-                  <li class="method">connect</li>
-                  <li class="method">disconnect</li>
-                  <li class="method">add_toggle_ref</li>
-                  <li class="method">remove_toggle_ref</li>
-                  <li class="method">bind_property</li>
-                  <li class="signal">notify</li>
-                  <li class="field">ref_count</li>
-                </ul>
-              </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">get_class</li>
+                <li class="method">get_data</li>
+                <li class="method">get_property</li>
+                <li class="method">get_qdata</li>
+                <li class="method">get_type</li>
+                <li class="method">getv</li>
+                <li class="method">notify_property</li>
+                <li class="method">@ref</li>
+                <li class="method">ref_sink</li>
+                <li class="method">replace_data</li>
+                <li class="method">replace_qdata</li>
+                <li class="method">remove_toggle_ref</li>
+                <li class="method">remove_weak_pointer</li>
+                <li class="method">@set</li>
+                <li class="method">set_data</li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">set_data_full</li>
+                <li class="method">set_property</li>
+                <li class="method">set_qdata</li>
+                <li class="method">set_qdata_full</li>
+                <li class="method">setv</li>
+                <li class="method">steal_data</li>
+                <li class="method">steal_qdata</li>
+                <li class="method">thaw_notify</li>
+                <li class="method">unref</li>
+                <li class="method">watch_closure</li>
+                <li class="method">weak_ref</li>
+                <li class="method">weak_unref</li>
+                <li class="signal">notify</li>
+                <li class="field">ref_count</li>
+              </ul>
             </div>
           </div>
-          <div class="box">
-            <div class="headline">
-              <div class="text">All known members inherited from interface Models.IModel</div>
-              <div class="toggle">
-                <img onclick="toggle_box  (this, 'box-content-14')" src="../coll_open.png">&nbsp;</div>
-              </div>
-              <div class="content" id="box-content-14">
-                <div class="column">
-                  <ul class="navi_inline">
-                    <li class="abstract_method"><a href="Models.IModel.qUpdate.html">qUpdate</a></li>
-                  </ul>
-                </div>
-                <div class="column">
-                  <ul class="navi_inline">
-                    <li class="abstract_method"><a href="Models.IModel.pUpdate.html">pUpdate</a></li>
-                  </ul>
-                </div>
-                <div class="column">
-                  <ul class="navi_inline">
-                  </ul>
-                </div>
-              </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-14')">All known members inherited from interface Models.IModel</div>
+          <div class="content" id="box-content-14">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Models.IModel.qUpdate.html">qUpdate</a></li>
+              </ul>
             </div>
-            <div class="box">
-              <div class="headline">
-                <div class="text">All known members inherited from interface Models.ISolver</div>
-                <div class="toggle">
-                  <img onclick="toggle_box  (this, 'box-content-15')" src="../coll_open.png">&nbsp;</div>
-                </div>
-                <div class="content" id="box-content-15">
-                  <div class="column">
-                    <ul class="navi_inline">
-                      <li class="abstract_method"><a href="Models.ISolver.solve.html">solve</a></li>
-                    </ul>
-                  </div>
-                  <div class="column">
-                    <ul class="navi_inline">
-                    </ul>
-                  </div>
-                  <div class="column">
-                    <ul class="navi_inline">
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Models.IModel.pUpdate.html">pUpdate</a></li>
+              </ul>
             </div>
-          </div><br/>
-          <div class="site_footer">Generated by <a href="http://www.valadoc.org/">Valadoc</a>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
           </div>
-        </body>
-      </html>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-15')">All known members inherited from interface Models.ISolver</div>
+          <div class="content" id="box-content-15">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Models.ISolver.solve.html">solve</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="http://www.valadoc.org/">Valadoc</a>
+    </div>
+  </body>
+</html>

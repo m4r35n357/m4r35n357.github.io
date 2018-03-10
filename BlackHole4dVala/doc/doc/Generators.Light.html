@@ -27,9 +27,16 @@
         </ul>
         <hr class="navi_hr"/>
         <ul class="navi_main">
+          <li class="static_method"><a href="Generators.Light.R.html">R</a></li>
+          <li class="static_method"><a href="Generators.Light.THETA.html">THETA</a></li>
           <li class="creation_method"><a href="Generators.Light.Light.html">Light</a></li>
+          <li class="method"><a href="Generators.Light.L.html">L</a></li>
+          <li class="method"><a href="Generators.Light.Q.html">Q</a></li>
           <li class="method"><a href="Generators.Light.generateInitialConditions.html">generateInitialConditions</a></li>
+          <li class="method"><a href="Generators.Light.printOutput.html">printOutput</a></li>
           <li class="method"><a href="Generators.Light.printPotentials.html">printPotentials</a></li>
+          <li class="method"><a href="Generators.Light.r1.html">r1</a></li>
+          <li class="method"><a href="Generators.Light.r2.html">r2</a></li>
         </ul>
       </div>
       <div class="site_content">
@@ -54,6 +61,17 @@
         <div class="package_note"><b>Package:</b> <a href="index.htm">doc</a>
         </div>
         <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Static methods:</h3>
+        <ul class="navi_inline">
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_keyword">static</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Generators.Light.R.html" class="static_method">R</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> r, <span class="main_basic_type"><span class="struct">double</span></span> a, <span class="main_basic_type"><span class="struct">double</span></span> E, <span class="main_basic_type"><span class="struct">double</span></span> L, <span class="main_basic_type"><span class="struct">double</span></span> Q)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="static_method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_keyword">static</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Generators.Light.THETA.html" class="static_method">THETA</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> theta, <span class="main_basic_type"><span class="struct">double</span></span> a, <span class="main_basic_type"><span class="struct">double</span></span> E, <span class="main_basic_type"><span class="struct">double</span></span> L, <span class="main_basic_type"><span class="struct">double</span></span> Q)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
         <h3 class="main_title">Creation methods:</h3>
         <ul class="navi_inline">
           <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Generators.Light.Light.html" class="creation_method">Light</a></b> ()
@@ -63,99 +81,120 @@
         </ul>
         <h3 class="main_title">Methods:</h3>
         <ul class="navi_inline">
-          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Generators.Light.generateInitialConditions.html" class="method">generateInitialConditions</a></b> (<span class="main_type"><span class="class">Object</span></span> input)
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Generators.Light.r1.html" class="method">r1</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> a)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Generators.Light.r2.html" class="method">r2</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> a)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Generators.Light.L.html" class="method">L</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> r, <span class="main_basic_type"><span class="struct">double</span></span> a)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_basic_type"><span class="struct">double</span></span> <b><a href="Generators.Light.Q.html" class="method">Q</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> r, <span class="main_basic_type"><span class="struct">double</span></span> a)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">private</span> <span class="main_keyword">void</span> <b><a href="Generators.Light.printOutput.html" class="method">printOutput</a></b> (<span class="main_basic_type"><span class="struct">double</span></span> r, <span class="main_basic_type"><span class="struct">double</span></span> a, <span class="main_basic_type"><span class="struct">bool</span></span> cross, <span class="main_basic_type"><span class="struct">double</span></span> start, <span class="main_basic_type"><span class="struct">double</span></span> end, <span class="main_basic_type"><span class="struct">double</span></span> step, <span class="main_basic_type"><span class="struct">int64</span></span> plotratio, <span class="main_basic_type"><span class="class">string</span></span> integrator, <span class="main_basic_type"><span class="class">string</span></span> scheme)
+            </span>
+            <div class="leaf_brief_description"><span class="brief_description">Write the initial conditions file to STDOUT and potential data to 
+                STDERR for plotting</span>
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Generators.Light.generateInitialConditions.html" class="method">generateInitialConditions</a></b> (<span class="main_type"><span class="class">Object</span></span> o)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Sets up and runs the solver</span>
             </div></li>
-          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Generators.Light.printPotentials.html" class="method">printPotentials</a></b> (<span class="main_type"><span class="class">Object</span></span> input)
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">void</span> <b><a href="Generators.Light.printPotentials.html" class="method">printPotentials</a></b> (<span class="main_type"><span class="class">Object</span></span> o)
             </span>
             <div class="leaf_brief_description"><span class="brief_description">Writes the potential data to STDOUT for plotting</span>
             </div></li>
         </ul>
         <h3 class="main_title">Inherited Members:</h3>
         <div class="box">
-          <div class="headline">
-            <div class="text">All known members inherited from class GLib.Object</div>
-            <div class="toggle">
-              <img onclick="toggle_box  (this, 'box-content-77')" src="../coll_open.png">&nbsp;</div>
+          <div class="headline" onclick="toggle_box (this, 'box-content-26')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-26">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="static_method">@new</li>
+                <li class="static_method">new_valist</li>
+                <li class="static_method">newv</li>
+                <li class="static_method">new_with_properties</li>
+                <li class="method">add_toggle_ref</li>
+                <li class="method">add_weak_pointer</li>
+                <li class="method">bind_property</li>
+                <li class="method">connect</li>
+                <li class="virtual_method">constructed</li>
+                <li class="method">disconnect</li>
+                <li class="virtual_method">dispose</li>
+                <li class="method">dup_data</li>
+                <li class="method">dup_qdata</li>
+                <li class="method">freeze_notify</li>
+                <li class="method">@get</li>
+              </ul>
             </div>
-            <div class="content" id="box-content-77">
-              <div class="column">
-                <ul class="navi_inline">
-                  <li class="static_method">@new</li>
-                  <li class="static_method">newv</li>
-                  <li class="static_method">new_valist</li>
-                  <li class="method">get_type</li>
-                  <li class="method">get_class</li>
-                  <li class="method">@ref</li>
-                  <li class="method">unref</li>
-                  <li class="method">ref_sink</li>
-                  <li class="method">weak_ref</li>
-                  <li class="method">weak_unref</li>
-                  <li class="method">add_weak_pointer</li>
-                  <li class="method">remove_weak_pointer</li>
-                </ul>
-              </div>
-              <div class="column">
-                <ul class="navi_inline">
-                  <li class="method">@get</li>
-                  <li class="method">@set</li>
-                  <li class="method">get_property</li>
-                  <li class="method">set_property</li>
-                  <li class="method">get_data</li>
-                  <li class="method">set_data</li>
-                  <li class="method">set_data_full</li>
-                  <li class="method">steal_data</li>
-                  <li class="method">get_qdata</li>
-                  <li class="method">set_qdata</li>
-                  <li class="method">set_qdata_full</li>
-                  <li class="method">steal_qdata</li>
-                </ul>
-              </div>
-              <div class="column">
-                <ul class="navi_inline">
-                  <li class="method">freeze_notify</li>
-                  <li class="method">thaw_notify</li>
-                  <li class="virtual_method">dispose</li>
-                  <li class="virtual_method">constructed</li>
-                  <li class="method">notify_property</li>
-                  <li class="method">connect</li>
-                  <li class="method">disconnect</li>
-                  <li class="method">add_toggle_ref</li>
-                  <li class="method">remove_toggle_ref</li>
-                  <li class="method">bind_property</li>
-                  <li class="signal">notify</li>
-                  <li class="field">ref_count</li>
-                </ul>
-              </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">get_class</li>
+                <li class="method">get_data</li>
+                <li class="method">get_property</li>
+                <li class="method">get_qdata</li>
+                <li class="method">get_type</li>
+                <li class="method">getv</li>
+                <li class="method">notify_property</li>
+                <li class="method">@ref</li>
+                <li class="method">ref_sink</li>
+                <li class="method">replace_data</li>
+                <li class="method">replace_qdata</li>
+                <li class="method">remove_toggle_ref</li>
+                <li class="method">remove_weak_pointer</li>
+                <li class="method">@set</li>
+                <li class="method">set_data</li>
+              </ul>
             </div>
-          </div>
-          <div class="box">
-            <div class="headline">
-              <div class="text">All known members inherited from interface Generators.IGenerator</div>
-              <div class="toggle">
-                <img onclick="toggle_box  (this, 'box-content-78')" src="../coll_open.png">&nbsp;</div>
-              </div>
-              <div class="content" id="box-content-78">
-                <div class="column">
-                  <ul class="navi_inline">
-                    <li class="abstract_method"><a href="Generators.IGenerator.generateInitialConditions.html">generateInitialConditions</a></li>
-                  </ul>
-                </div>
-                <div class="column">
-                  <ul class="navi_inline">
-                    <li class="abstract_method"><a href="Generators.IGenerator.printPotentials.html">printPotentials</a></li>
-                  </ul>
-                </div>
-                <div class="column">
-                  <ul class="navi_inline">
-                  </ul>
-                </div>
-              </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">set_data_full</li>
+                <li class="method">set_property</li>
+                <li class="method">set_qdata</li>
+                <li class="method">set_qdata_full</li>
+                <li class="method">setv</li>
+                <li class="method">steal_data</li>
+                <li class="method">steal_qdata</li>
+                <li class="method">thaw_notify</li>
+                <li class="method">unref</li>
+                <li class="method">watch_closure</li>
+                <li class="method">weak_ref</li>
+                <li class="method">weak_unref</li>
+                <li class="signal">notify</li>
+                <li class="field">ref_count</li>
+              </ul>
             </div>
           </div>
-        </div><br/>
-        <div class="site_footer">Generated by <a href="http://www.valadoc.org/">Valadoc</a>
         </div>
-      </body>
-    </html>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-27')">All known members inherited from interface Generators.IGenerator</div>
+          <div class="content" id="box-content-27">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Generators.IGenerator.generateInitialConditions.html">generateInitialConditions</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Generators.IGenerator.printPotentials.html">printPotentials</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="http://www.valadoc.org/">Valadoc</a>
+    </div>
+  </body>
+</html>
