@@ -50,7 +50,7 @@ var drawBackground = function () {
 	DISPLAY.bg.globalAlpha = 1.0;
 	DISPLAY.ball(DISPLAY.bg, DISPLAY.CYAN, DISPLAY.originX, DISPLAY.originY, ergosphere);
 	// Photon sphere
-    DISPLAY.circle(DISPLAY.bg, DISPLAY.MAGENTA, DISPLAY.originX, DISPLAY.originY, photonSphere);
+    DISPLAY.circle(DISPLAY.bg, DISPLAY.ORANGE, DISPLAY.originX, DISPLAY.originY, photonSphere);
 	// Gravitational radius
 	DISPLAY.ball(DISPLAY.bg, DISPLAY.BLACK, DISPLAY.originX, DISPLAY.originY, horizon);
 	// Initialize potential canvases
@@ -69,7 +69,7 @@ var drawBackground = function () {
 	DISPLAY.bgPotential.fillStyle = DISPLAY.CYAN;
 	DISPLAY.bgPotential.fillRect(0, 0, ergosphere, DISPLAY.pSize); 
 	// Photon sphere
-	DISPLAY.bgPotential.strokeStyle = DISPLAY.MAGENTA;
+	DISPLAY.bgPotential.strokeStyle = DISPLAY.ORANGE;
 		DISPLAY.bgPotential.beginPath();
 		DISPLAY.bgPotential.moveTo(photonSphere, 0);
 		DISPLAY.bgPotential.lineTo(photonSphere, DISPLAY.pSize);

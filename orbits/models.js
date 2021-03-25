@@ -58,22 +58,51 @@ var GLOBALS = {
 			return 3.0 + z2 + Math.sqrt((3.0 - z1) * (3.0 + z1 + 2.0 * z2));
 		}
 	},
+	suzuki: function (model, base, s, forward, back) {
+       		base(model, s * forward);
+       		base(model, s * forward);
+	        base(model, s * back);
+       		base(model, s * forward);
+       		base(model, s * forward);
+	},
+	base2: function (model, c) { // 2nd-order symplectic building block
+		model.updateQ(0.5 * c, model.rDot);
+		model.updateP(c, model.r);
+		model.updateQ(0.5 * c, model.rDot);
+	},
+	secondOrder: function (model) {
+		this.base2(model, 1.0);
+	},
+	base4: function (model, s) {
+		GLOBALS.suzuki(model, GLOBALS.base2, s, GLOBALS.zFwd, GLOBALS.zBack)
+	},
+	fourthOrder: function (model) {
+		this.base4(model, 1.0);
+	},
+	base6: function (model, s) {
+		GLOBALS.suzuki(model, GLOBALS.base4, s, GLOBALS.yFwd, GLOBALS.yBack)
+	},
+	sixthOrder: function (model) {
+		this.base6(model, 1.0);
+	},
+	base8: function (model, s) {
+		GLOBALS.suzuki(model, GLOBALS.base6, s, GLOBALS.xFwd, GLOBALS.xBack)
+	},
+	eightthOrder: function (model) {
+		this.base8(model, 1.0);
+	},
+	base10: function (model, s) {
+		GLOBALS.suzuki(model, GLOBALS.base8, s, GLOBALS.wFwd, GLOBALS.wBack)
+	},
+	tenthOrder: function (model) {
+		this.base10(model, 1.0);
+	},
 	solve: function (model) {  // Generalized symplectic integrator
-		var sympBase = function (model, c) { // 2nd-order symplectic building block
-			model.updateQ(0.5 * c, model.rDot);
-			model.updateP(c, model.r);
-			model.updateQ(0.5 * c, model.rDot);
-		};
 		var i, M, r, phiDegrees, tmp, h;
 		var rOld = model.rOld = model.r;
 		var direction = model.direction;
 		var h0 = model.h0;
-		for (i = 0; i < this.gammaLength; i += 1) {
-			sympBase(model, this.coefficients[i]);
-		}
-		for (i = this.gammaLength; i >= 0; i -= 1) {
-			sympBase(model, this.coefficients[i]);
-		}
+		this.method(model);
 		r = model.r;
 		if (((r > rOld) && (direction < 0)) || ((r < rOld) && (direction > 0))) {
 			phiDegrees = this.phiDMS(model.phi);
@@ -93,55 +122,34 @@ var GLOBALS = {
 		}
 	},
 	initialize: function () {
+		this.wFwd = 1.0 / (4.0 - 4.0**(1.0 / 9.0))
+		this.xFwd = 1.0 / (4.0 - 4.0**(1.0 / 7.0))
+		this.yFwd = 1.0 / (4.0 - 4.0**(1.0 / 5.0))
+		this.zFwd = 1.0 / (4.0 - 4.0**(1.0 / 3.0))
+		this.wBack = 1.0 - 4.0 * this.wFwd
+		this.xBack = 1.0 - 4.0 * this.xFwd
+		this.yBack = 1.0 - 4.0 * this.yFwd
+		this.zBack = 1.0 - 4.0 * this.zFwd
 		switch(INIT.order) {
 		    case 2:
-		        this.coefficients = [1.0];
+		        this.method = this.secondOrder;
 			break;
 		    case 4:
-			    var CUBEROOT2 = Math.pow(2.0, 1.0 / 3.0);
-			    var y = 1.0 / (2.0 - CUBEROOT2);
-			    this.coefficients = [y, - y * CUBEROOT2];
+		        this.method = this.fourthOrder;
 			break;
 		    case 6:
-		        this.coefficients = [0.78451361047755726381949763,
-									0.23557321335935813368479318,
-									-1.17767998417887100694641568,
-									1.31518632068391121888424973];
+		        this.method = this.sixthOrder;
 			break;
 		    case 8:
-		        this.coefficients = [0.74167036435061295344822780,
-									-0.40910082580003159399730010,
-									0.19075471029623837995387626,
-									-0.57386247111608226665638773,
-									0.29906418130365592384446354,
-									0.33462491824529818378495798,
-									0.31529309239676659663205666,
-									-0.79688793935291635401978884];
+		        this.method = this.eightthOrder;
 			break;
 		    case 10:
-		        this.coefficients = [0.09040619368607278492161150,
-									0.53591815953030120213784983,
-									0.35123257547493978187517736,
-									-0.31116802097815835426086544,
-									-0.52556314194263510431065549,
-									0.14447909410225247647345695,
-									0.02983588609748235818064083,
-									0.17786179923739805133592238,
-									0.09826906939341637652532377,
-									0.46179986210411860873242126,
-									-0.33377845599881851314531820,
-									0.07095684836524793621031152,
-									0.23666960070126868771909819,
-									-0.49725977950660985445028388,
-									-0.30399616617237257346546356,
-									0.05246957188100069574521612,
-									0.44373380805019087955111365];
+		        this.method = this.tenthOrder;
 			break;
 		    default:
-		        this.coefficients = [1.0];
+		        this.method = this.eightthOrder;
 			break;
 		}
-		this.gammaLength = this.coefficients.length - 1;
 	},
 };
 

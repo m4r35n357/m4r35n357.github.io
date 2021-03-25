@@ -30,7 +30,7 @@ var DISPLAY = {
 	YELLOW: "#ffff00",
 	CYAN: "#008080",
 	MAGENTA: "#800080",
-	ORANGE: "#ff8000",
+	ORANGE: "#ff4000",
 	WHITE: "#ffffff",
 	GREY: "#a0a0a0",
 	n: 0,
