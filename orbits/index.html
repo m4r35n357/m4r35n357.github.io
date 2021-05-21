@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="orbits.css">
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="orbits.css">
+    </head>
 
-	<body>
-		<div id="orbits">
-			<p><canvas id="bgorbit" class="canvas bg" width="1080" height="1080" /></p>
-			<p><canvas id="fgorbitn" class="canvas fgn" width="1080" height="1080" /></p>
-			<p><canvas id="fgorbitgr" class="canvas fggr" width="1080" height="1080" /></p>
-			<p><canvas id="tracks" class="canvas tracks" width="1080" height="1080" /></p>
-		</div>
+    <body>
+        <div id="orbits">
+            <p><canvas id="bgorbit" class="canvas bg" width="1080" height="1080" /></p>
+            <p><canvas id="fgorbitn" class="canvas fgn" width="1080" height="1080" /></p>
+            <p><canvas id="fgorbitgr" class="canvas fggr" width="1080" height="1080" /></p>
+            <p><canvas id="tracks" class="canvas tracks" width="1080" height="1080" /></p>
+        </div>
 
-		<div id="potentials">
-			<p><canvas id="bgpot" class="canvas bg" width="540" height="540" /></p>
-			<p><canvas id="fgpotn" class="canvas fgn" width="540" height="540" /></p>
-			<p><canvas id="fgpotgr" class="canvas fggr" width="540" height="540" /></p>
-		</div>
+        <div id="potentials">
+            <p><canvas id="bgpot" class="canvas bg" width="540" height="540" /></p>
+            <p><canvas id="fgpotn" class="canvas fgn" width="540" height="540" /></p>
+            <p><canvas id="fgpotgr" class="canvas fggr" width="540" height="540" /></p>
+        </div>
 
-		<div id="input">
-			<form id="scenarioForm" method="post">
-				<table border="0">
-					<!--
-					-->
-					<tr>
-						<td align="right">c</td><td><input id="c" type="text" value="299792458.0" size="12" /></td>
-						<td align="right">G</td><td><input id="G" type="text" value="6.67398e-11" size="8" /></td>
-						<td align="right">Integrator</td>
-						<td><select id="order">
-							<option value="2">&nbsp;&nbsp;2nd Order</option>
-							<option value="4">&nbsp;&nbsp;4th Order</option>
-							<option value="6">&nbsp;&nbsp;6th Order</option>
-							<option value="8">&nbsp;&nbsp;8th Order</option>
-							<option value="10">10th Order</option>
-						</select></td>
-					</tr>
-					<tr>
-						<td align="right">&delta;T</td><td><input id="timestep" type="text" value="1000000000" size="12" /></td>
-						<td align="right">Mass</td><td><input id="mass" type="text" value="1.9891e30" size="8" /></td>
-						<td align="right">Spin</td>
-						<td><select id="spin">
-							<option value="1.00">a = &nbsp;1.0</option>
-							<option value="0.75">a = &nbsp;0.75</option>
-							<option value="0.50">a = &nbsp;0.5</option>
-							<option value="0.25">a = &nbsp;0.25</option>
-							<option value="0.00" selected="selected">a = &nbsp;0.0</option>
-							<option value="-0.25">a = -0.25</option>
-							<option value="-0.50">a = -0.5</option>
-							<option value="-0.75">a = -0.75</option>
-							<option value="-1.00">a = -1.0</option>
-						</select></td>
-					</tr>
-					<tr>
-						<td align="right">r scale</td><td><input id="scale" type="text" value="0.0000000075" size="12" /></td>
-						<td align="right">r</td><td><input id="radius" type="text" value="58.0e9" size="8" /></td>
-						<td align="right">Debug</td><td><input id="toggleDebug" type="checkbox" unchecked /></td>
-					</tr>
-					<tr>
-					</tr>
-					<tr>
-						<td align="right">p scale</td><td><input id="pscale" type="text" value="1300000000" size="12" /></td>
-						<td align="right">L&percnt;</td><td><input id="lfactor" type="text" value="97.9" size="8" /></td>
-						<td align="right">Tracks</td><td><input id="showTracks" type="checkbox" checked /></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td><td></td><td></td><td align="right"><input type="submit" value="Change"></td>
-					</tr>
-				</table> 
-			</form>
-		</div>
+        <div id="input">
+            <form id="scenarioForm" method="post">
+                <table border="0">
+                    <!--
+                    -->
+                    <tr>
+                        <td align="right">c</td><td><input id="c" type="text" value="299792458.0" size="12" /></td>
+                        <td align="right">G</td><td><input id="G" type="text" value="6.67398e-11" size="8" /></td>
+                        <td align="right">Integrator</td>
+                        <td><select id="order">
+                            <option value="2">&nbsp;&nbsp;2nd Order</option>
+                            <option value="4">&nbsp;&nbsp;4th Order</option>
+                            <option value="6">&nbsp;&nbsp;6th Order</option>
+                            <option value="8">&nbsp;&nbsp;8th Order</option>
+                            <option value="10">10th Order</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td align="right">&delta;T</td><td><input id="timestep" type="text" value="1000000000" size="12" /></td>
+                        <td align="right">Mass</td><td><input id="mass" type="text" value="1.9891e30" size="8" /></td>
+                        <td align="right">Spin</td>
+                        <td><select id="spin">
+                            <option value="1.00">a = &nbsp;1.0</option>
+                            <option value="0.75">a = &nbsp;0.75</option>
+                            <option value="0.50">a = &nbsp;0.5</option>
+                            <option value="0.25">a = &nbsp;0.25</option>
+                            <option value="0.00" selected="selected">a = &nbsp;0.0</option>
+                            <option value="-0.25">a = -0.25</option>
+                            <option value="-0.50">a = -0.5</option>
+                            <option value="-0.75">a = -0.75</option>
+                            <option value="-1.00">a = -1.0</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td align="right">r scale</td><td><input id="scale" type="text" value="0.0000000075" size="12" /></td>
+                        <td align="right">r</td><td><input id="radius" type="text" value="58.0e9" size="8" /></td>
+                        <td align="right">Debug</td><td><input id="toggleDebug" type="checkbox" unchecked /></td>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <td align="right">p scale</td><td><input id="pscale" type="text" value="1300000000" size="12" /></td>
+                        <td align="right">L&percnt;</td><td><input id="lfactor" type="text" value="97.9" size="8" /></td>
+                        <td align="right">Tracks</td><td><input id="showTracks" type="checkbox" checked /></td>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td align="left"><input type="submit" value="Change"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
 
-		<div id="output">
-			<table border="0">
-				<tr><th></th><th class="newton">Newton</th><th class="gr">GR</th><th class="gr">GR</th></tr>			
-				<tr><td>E</td><td id="eNEWTON" class="newton">-</td><td id="eGR" class="gr"></td><td id="rs" class="gr"><td>EH</td></tr>
-				<tr><td>L</td><td id="lNEWTON" class="newton"></td><td id="lGR" class="gr"></td><td id="tauGR" class="gr"><td>&tau;</td></tr>
-				<tr><td>t</td><td id="timeNEWTON" class="newton"></td><td id="tGR" class="gr"></td><td id="tdotGR" class="gr"></td><td>dt/d&tau;, &gamma;</td></tr>
-				<tr><td>r</td><td id="rNEWTON" class="newton"></td><td id="rGR" class="gr"></td><td id="rdotGR" class="gr"></td><td>dr/d&tau;</td></tr>
-				<tr><td>&phi;</td><td id="phiNEWTON" class="newton"></td><td id="phiGR" class="gr"></td><td id="phidotGR" class="gr"></td><td>d&phi;/d&tau;</td></tr>
-				<tr><td>r<sub>min</sub></td><td id="rminNEWTON" class="newton">-</td><td id="rminGR" class="gr">-</td></tr>
-				<tr><td>&phi;<sub>min</sub></td><td id="pNEWTON" class="newton">-</td><td id="pGR" class="gr">-</td></tr>
-				<tr><td>r<sub>max</sub></td><td id="rmaxNEWTON" class="newton">-</td><td id="rmaxGR" class="gr">-</td></tr>
-				<tr><td>&phi;<sub>max</sub></td><td id="aNEWTON" class="newton">-</td><td id="aGR" class="gr">-</td></tr>
-				<tr><td>v/c</td><td id="vNEWTON" class="newton">-</td><td id="vGR" class="gr">-</td></tr>
-			</table>
-		</div>
+        <div id="output">
+            <table border="0">
+                <tr><th></th><th class="newton">Newton</th><th class="gr">GR</th><th class="gr">GR</th></tr>
+                <tr><td>E</td><td id="eNEWTON" class="newton">-</td><td id="eGR" class="gr"></td><td id="rs" class="gr"><td>EH</td></tr>
+                <tr><td>L</td><td id="lNEWTON" class="newton"></td><td id="lGR" class="gr"></td><td id="tauGR" class="gr"><td>&tau;</td></tr>
+                <tr><td>t</td><td id="timeNEWTON" class="newton"></td><td id="tGR" class="gr"></td><td id="tdotGR" class="gr"></td><td>dt/d&tau;, &gamma;</td></tr>
+                <tr><td>r</td><td id="rNEWTON" class="newton"></td><td id="rGR" class="gr"></td><td id="rdotGR" class="gr"></td><td>dr/d&tau;</td></tr>
+                <tr><td>&phi;</td><td id="phiNEWTON" class="newton"></td><td id="phiGR" class="gr"></td><td id="phidotGR" class="gr"></td><td>d&phi;/d&tau;</td></tr>
+                <tr><td>r<sub>min</sub></td><td id="rminNEWTON" class="newton">-</td><td id="rminGR" class="gr">-</td></tr>
+                <tr><td>&phi;<sub>min</sub></td><td id="pNEWTON" class="newton">-</td><td id="pGR" class="gr">-</td></tr>
+                <tr><td>r<sub>max</sub></td><td id="rmaxNEWTON" class="newton">-</td><td id="rmaxGR" class="gr">-</td></tr>
+                <tr><td>&phi;<sub>max</sub></td><td id="aNEWTON" class="newton">-</td><td id="aGR" class="gr">-</td></tr>
+                <tr><td>v/c</td><td id="vNEWTON" class="newton">-</td><td id="vGR" class="gr">-</td></tr>
+            </table>
+        </div>
 
-		<script type="text/javascript" src="models.js"></script>
-		<script type="text/javascript" src="display.js"></script>
-		<script type="text/javascript" src="orbits.js"></script>
-	</body>
+        <script type="text/javascript" src="integrator.js"></script>
+        <script type="text/javascript" src="models.js"></script>
+        <script type="text/javascript" src="display.js"></script>
+        <script type="text/javascript" src="orbits.js"></script>
+    </body>
 </html>
-
