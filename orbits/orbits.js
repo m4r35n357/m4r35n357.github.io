@@ -82,7 +82,7 @@ var drawBackground = function () {
     DISPLAY.energyBar();
     // Constants of motion for table
     NEWTON.lDisplay.innerHTML = (GLOBALS.M * NEWTON.L).toFixed(6);
-    GR.eDisplay.innerHTML = (GLOBALS.M * GR.E).toFixed(6);
+    GR.eDisplay.innerHTML = (GR.E).toFixed(6);
     GR.lDisplay.innerHTML = (GLOBALS.M * GR.L).toFixed(6);
     GR.rsDisplay.innerHTML = (GLOBALS.M * GLOBALS.horizon).toFixed(3);
     // time step counter

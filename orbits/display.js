@@ -102,8 +102,8 @@ var DISPLAY = {
     },
     plotRotation: function () {
         var phiBH, X, Y;
-        var radius = GLOBALS.radius(GLOBALS.Rs) * this.scale;
-        this.phiBH += GLOBALS.deltaPhi(GLOBALS.Rs);
+        var radius = GLOBALS.radius(GLOBALS.ergosphere) * GLOBALS.M * DISPLAY.scale;
+        this.phiBH += GLOBALS.deltaPhi(GLOBALS.ergosphere);
         phiBH = this.phiBH;
         X = this.pointX(radius, phiBH);
         Y = this.pointY(radius, phiBH);
