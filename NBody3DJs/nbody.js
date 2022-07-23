@@ -105,17 +105,19 @@ function tenthOrder (h) {
 }
 
 function cog () {
+    b = GLOBALS.particles;
     var X = Y = Z = mT = 0.0, a;
     for (i = 0; i < GLOBALS.particles.length; i += 1) {
-        a = GLOBALS.particles[i];
-        X += a.Qx * a.mass;
-        Y += a.Qy * a.mass;
-        Z += a.Qz * a.mass;
-        mT += a.mass;
+        X += b[i].Qx * b[i].mass;
+        Y += b[i].Qy * b[i].mass;
+        Z += b[i].Qz * b[i].mass;
+        mT += b[i].mass;
     }
-    cogX = X / mT;
-    cogY = Y / mT;
-    cogZ = Z / mT;
+    return {
+        X: X / mT,
+        Y: Y / mT,
+        Z: Z / mT
+    };
 }
 
 function distance (xA, yA, zA, xB, yB, zB) {
@@ -124,13 +126,12 @@ function distance (xA, yA, zA, xB, yB, zB) {
 
 function hamiltonian () {
     var a, b, i, j, energy = 0.0;
+    b = GLOBALS.particles;
     for (i = 0; i < GLOBALS.particles.length; i += 1) {
-        a = GLOBALS.particles[i];
-        energy += 0.5 * (a.Px * a.Px + a.Py * a.Py + a.Pz * a.Pz) / a.mass;
+        energy += 0.5 * (b[i].Px * b[i].Px + b[i].Py * b[i].Py + b[i].Pz * b[i].Pz) / b[i].mass;
         for (j = 0; j < GLOBALS.particles.length; j += 1) {
             if (i > j) {
-                b = GLOBALS.particles[j];
-                energy -= GLOBALS.g * a.mass * b.mass / distance(a.Qx, a.Qy, a.Qz, b.Qx, b.Qy, b.Qz);
+                energy -= GLOBALS.g * b[i].mass * b[j].mass / distance(b[i].Qx, b[i].Qy, b[i].Qz, b[j].Qx, b[j].Qy, b[j].Qz);
             }
         }
     }
@@ -139,34 +140,31 @@ function hamiltonian () {
 
 function updateQ (c) {
     var a, i, tmp;
+    b = GLOBALS.particles;
     for (i = 0; i < GLOBALS.particles.length; i += 1) {
-        a = GLOBALS.particles[i];
-        tmp = c / a.mass;
-        a.Qx += a.Px * tmp;
-        a.Qy += a.Py * tmp;
-        a.Qz += a.Pz * tmp;
+        tmp = c / b[i].mass;
+        b[i].Qx += b[i].Px * tmp;
+        b[i].Qy += b[i].Py * tmp;
+        b[i].Qz += b[i].Pz * tmp;
     }
 }
 
 function updateP (c) {
     var a, b, i, j, tmp, dPx, dPy, dPz;
+    b = GLOBALS.particles;
     for (i = 0; i < GLOBALS.particles.length; i += 1) {
-        a = GLOBALS.particles[i];
-        for (j = 0; j < GLOBALS.particles.length; j += 1) {
-            if (i > j) {
-                b = GLOBALS.particles[j];
-                d = distance(a.Qx, a.Qy, a.Qz, b.Qx, b.Qy, b.Qz)
-                tmp = - c * GLOBALS.g * a.mass * b.mass / (d * d * d);
-                dPx = (b.Qx - a.Qx) * tmp;
-                dPy = (b.Qy - a.Qy) * tmp;
-                dPz = (b.Qz - a.Qz) * tmp;
-                a.Px -= dPx;
-                a.Py -= dPy;
-                a.Pz -= dPz;
-                b.Px += dPx;
-                b.Py += dPy;
-                b.Pz += dPz;
-            }
+        for (j = 0; j < i; j += 1) {
+            d = distance(b[i].Qx, b[i].Qy, b[i].Qz, b[j].Qx, b[j].Qy, b[j].Qz)
+            tmp = - c * GLOBALS.g * b[i].mass * b[j].mass / (d * d * d);
+            dPx = (b[j].Qx - b[i].Qx) * tmp;
+            dPy = (b[j].Qy - b[i].Qy) * tmp;
+            dPz = (b[j].Qz - b[i].Qz) * tmp;
+            b[i].Px -= dPx;
+            b[i].Py -= dPy;
+            b[i].Pz -= dPz;
+            b[j].Px += dPx;
+            b[j].Py += dPy;
+            b[j].Pz += dPz;
         }
     }
 }

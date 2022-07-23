@@ -14,7 +14,8 @@ init();
 animate();
 
 function init() {
-    var ONETHIRD = 1.0 / 3.0;
+    const ONETHIRD = 1.0 / 3.0;
+    const PI2 = Math.PI * 2;
 
     eightBody();
     initialize();
@@ -28,7 +29,6 @@ function init() {
 
     scene = new THREE.Scene();
 
-    var PI2 = Math.PI * 2;
     var program = function ( context ) {
         context.beginPath();
         context.arc( 0, 0, 1, 0, PI2, true );
@@ -105,25 +105,30 @@ function onDocumentTouchMove( event ) {
 
 function animate() {
     requestAnimationFrame( animate );
-    render();
+    update_scene();
+    renderer.render( scene, camera );
     stats.update();
 }
 
-function render() {
-    var a, hNow, dH;
+function update_scene() {
+    const MIN_ERROR = 1.0e-18;
+    var particle, hNow, dH;
+
     camera.position.x += ( mouseX - 0.5 * camera.position.x ) * 1.0;
     camera.position.y += ( - mouseY - 0.5 * camera.position.y ) * 1.0;
     camera.lookAt( scene.position );
+
     // simulate . . .
     GLOBALS.integrator(GLOBALS.ts);
-    cog();
+    var centre = cog();
     for (i = 0; i < GLOBALS.particles.length; i += 1) {
-        a = GLOBALS.particles[i];
-        group.children[i].position.x = scale * (a.Qx - cogX);
-        group.children[i].position.y = scale * (a.Qy - cogY);
-        group.children[i].position.z = scale * (a.Qz - cogZ);
+        particle = GLOBALS.particles[i];
+        group.children[i].position.x = scale * (particle.Qx - centre.X);
+        group.children[i].position.y = scale * (particle.Qy - centre.Y);
+        group.children[i].position.z = scale * (particle.Qz - centre.Z);
     }
-    // monitor value of the Hamiltonian
+
+    // monitor Hamiltonian
     if (GLOBALS.debug) {
         if (GLOBALS.step % 100 === 0) {
             hNow = hamiltonian();
@@ -134,13 +139,10 @@ function render() {
                 GLOBALS.Hmax = hNow;
             }
             console.log("t: " + (GLOBALS.step * GLOBALS.ts).toFixed(0) +
-                        ", H:" + hNow.toExponential(6) +
-                        ", H0:" + GLOBALS.H0.toExponential(6) +
-                        ", H-:" + GLOBALS.Hmin.toExponential(6) +
-                        ", H+:" + GLOBALS.Hmax.toExponential(6) +
-                        ", ER:" + (10.0 * Math.log(dH > 1.0e-18 ? dH : 1.0e-18) / Math.log(10.0)).toFixed(1));
+                        ", H:" + hNow.toExponential(6) + ", H0:" + GLOBALS.H0.toExponential(6) +
+                        ", H-:" + GLOBALS.Hmin.toExponential(6) + ", H+:" + GLOBALS.Hmax.toExponential(6) +
+                        ", ER:" + (10.0 * Math.log(dH > MIN_ERROR ? dH : MIN_ERROR) / Math.log(10.0)).toFixed(1));
         }
     }
     GLOBALS.step += 1;
-    renderer.render( scene, camera );
 }
